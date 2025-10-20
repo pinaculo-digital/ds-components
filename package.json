@@ -1,0 +1,25 @@
+{
+  "name": "pina-components",
+  "version": "1.0.0",
+  "description": "Pináculo digital built-in components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pinaculo-digital/ds-components.git"
+  },
+  "author": "Pináculo Digital",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pinaculo-digital/ds-components/issues"
+  },
+  "homepage": "https://github.com/pinaculo-digital/ds-components#readme",
+  "dependencies": {
+    "svelte": "^5.41.1"
+  },
+  "devDependencies": {
+    "date-fns": "^4.1.0"
+  }
+}

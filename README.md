@@ -1,1 +1,5 @@
-"# ds-components" 
+"#precisa ajustar os imports"
+"depois disso você commita"
+"da um /npm version patch"
+"depois um /npm publish"
+"no projeto você dá um npm i pina-components@latest"
