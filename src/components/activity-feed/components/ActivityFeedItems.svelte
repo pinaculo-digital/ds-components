@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { getColor, type ColorName } from '../../../lib/utils/colors/colors.utils'
-  import { DataSanitizer } from '../../../lib/sanitizers/time'
+  import { getColor, type ColorName } from '../../../lib/utils/colors/colors.utils';
+  import handleDate from '../../../lib/sanitizers/time';
   import type { Snippet } from 'svelte';
-  import Avatar from '../../avatar/components/Avatar.svelte'
+  import Avatar from '../../avatar/components/Avatar.svelte';
 
   interface Props {
     optionsMenu?: Snippet;
@@ -24,7 +24,7 @@
       <div class="flex flex-col gap-1">
         <b class="text-label-small text-strong-950 gap-1">{label}</b>
         <div class="flex items-center gap-1">
-          <span class="text-paragraph-x-small text-sub-600">{DataSanitizer.formatDistanceToNow(date)}</span>
+          <span class="text-paragraph-x-small text-sub-600">{handleDate.formatDistanceToNow(date)}</span>
           <span class="text-paragraph-x-small text-soft-400">∙</span>
           <span class="text-paragraph-x-small text-sub-600">{description}</span>
         </div>

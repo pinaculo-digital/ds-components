@@ -1,6 +1,6 @@
-<!-- <script lang="ts" module>
-  import Icon from '$components/assets/icon/Icon.svelte';
-  import type { IconName } from '$components/assets/icon/icons.type';
+<script lang="ts" module>
+  import Icon from '../../../assets/icon/Icon.svelte';
+  import type { IconName } from '../../../assets/icon/icons.type';
 
   interface Props {
     leftIcon?: IconName;
@@ -24,6 +24,37 @@
     onClick?.();
   }
 </script>
+
+<!-- <div class="flex w-full flex-col gap-4.5 md:w-96">
+  {#each opcoes as { icon, label, texto }, i}
+    {@const isOpen = itemAberto === i}
+    <button
+      class="flex w-full items-center rounded-xl p-3.5 text-left {isOpen
+        ? 'bg-weak-50 border-none'
+        : 'border-soft-200 bg-white-0 border'}"
+      onclick={() => toggleAccordion(i)}
+    >
+      <div class="flex w-full items-center justify-between gap-4.5">
+        <div class="flex {isOpen ? 'items-start' : 'items-center'} gap-4.5">
+          <div class={isOpen ? 'mt-1' : ''}>
+            <Icon type={leftIcon || 'question-line'} opticalSize={16} />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <p class="text-strong-950 text-[14px] font-medium">{label}</p>
+            {#if isOpen}
+              <span class="text-sub-600 text-[14px] font-normal">{texto}</span>
+            {/if}
+          </div>
+        </div>
+        {#if icon}
+          <div class="flex items-start justify-start {isOpen ? 'mt-1' : ''}">
+            <Icon type={icon} opticalSize={16} />
+          </div>
+        {/if}
+      </div>
+    </button>
+  {/each}
+</div> -->
 
 <div class="flex w-full flex-col gap-4.5 md:w-96">
   {#each opcoes as { closeIcon, openIcon, label, texto }, i}
@@ -52,4 +83,4 @@
       {/if}
     </button>
   {/each}
-</div> -->
+</div>

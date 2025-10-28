@@ -1,6 +1,10 @@
-<!-- <script lang="ts" module>
+<script lang="ts" module>
   import { goto } from '$app/navigation';
   import { page } from '$app/state';
+
+  interface Props {
+    description: 'Este componente mostra o caminho de navegação, como o page ele busca o caminho da página atual. E com o goto ele redireciona para a página desejada.';
+  }
 </script>
 
 <script lang="ts">
@@ -24,7 +28,6 @@
 </script>
 
 <div class="text-sub-600 flex items-center gap-4 text-[14px] font-medium">
-  <SvgBread />
   <div class="flex items-center gap-3">
     {#each rotas as rota, i}
       <button class={rota.link === page.url.pathname ? 'text-strong-950' : ''} onclick={() => goto(rota.link)}>
@@ -35,4 +38,4 @@
       {/if}
     {/each}
   </div>
-</div> -->
+</div>

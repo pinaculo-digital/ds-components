@@ -1,14 +1,14 @@
 <script lang="ts">
-  import Icon from '$components/assets/icon/Icon.svelte';
+  import Icon from '$components/ds-components/icons/components/Icon.svelte';
 
-   import { getColor, type ColorName } from '../../../lib/utils/colors/colors.utils'
-  import type { IconName } from '$components/assets/icon/icons.type';
+  import { getColor, type ColorName } from '../../../lib/utils/colors/colors.utils';
+  import type { IconName } from '../../../lib/utils/icons/icons.type';
 
   interface Props {
     borderColor: ColorName;
     textColor: ColorName;
     buttons: {
-      label: string | IconName;
+      label: string;
       iconLeft?: IconName;
       iconRight?: IconName;
       disabled?: boolean;

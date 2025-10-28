@@ -12,7 +12,10 @@ export class DataSanitizer {
    * @param {string} [dateFormat='dd/MM/yyyy'] - O formato desejado para a data.
    * @returns {string} - A data formatada como uma string.
    */
-  static readonly formatDate = (date: Date, dateFormat: string = "dd/MM/yyyy"): string => {
+  static readonly formatDate = (
+    date: Date,
+    dateFormat: string = "dd/MM/yyyy"
+  ): string => {
     return format(new Date(date), dateFormat);
   };
 
@@ -22,8 +25,11 @@ export class DataSanitizer {
    * @param {Date} date - A data a ser comparada com o presente.
    * @returns {string} - A distância de tempo até o presente, formatada como uma string.
    */
-  static readonly formatDistanceToNow = (date: Date) => {
-    return formatDistance(new Date(date), new Date(), { addSuffix: true, locale: ptBR });
+  formatDistanceToNow = (date: Date) => {
+    return formatDistance(new Date(date), new Date(), {
+      addSuffix: true,
+      locale: ptBR,
+    });
   };
 
   /**
@@ -74,7 +80,11 @@ export class DataSanitizer {
    * @param {string} [dateFormat='dd/MM/yyyy'] - O formato desejado para a data resultante.
    * @returns {string} - A nova data, com os dias adicionados, formatada
    */
-  addDaysToDate = (date: Date, days: number, dateFormat: string = "dd/MM/yyyy") => {
+  addDaysToDate = (
+    date: Date,
+    days: number,
+    dateFormat: string = "dd/MM/yyyy"
+  ) => {
     return format(addDays(new Date(date), days), dateFormat);
   };
 

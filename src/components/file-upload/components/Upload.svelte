@@ -1,6 +1,6 @@
 <script lang="ts" module>
   import Label from '$components/assets/labels/Label.svelte';
-  import { fileManager } from '$lib/actions/file.svelte';
+  import { fileManager } from '../../../lib/actions/file.svelte';
 
   interface Props {
     formImage: {

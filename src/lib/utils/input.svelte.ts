@@ -1,49 +1,49 @@
-import validateInputs from '$lib/sanitizers/validateFormats';
+import validateInputs from "../../../lib/sanitizers/validateFormats";
 
 class ValidacaoInputNormalizada {
   Email = (v: string): string => {
     if (validateInputs.email(v)) {
-      return '';
+      return "";
     }
-    return 'E-mail não é valido';
+    return "E-mail não é valido";
   };
 
   NaoVazio = (v: string, message?: string): string => {
     if (v.length >= 1) {
-      return '';
+      return "";
     }
-    return message ?? 'Campo não pode ser vazio';
+    return message ?? "Campo não pode ser vazio";
   };
 
   Date = (v: string): string => {
-    return '';
+    return "";
   };
 
   Telefone = (v: string): string => {
-    if (v.replace(/\D/g, '').length === 11) {
-      return '';
+    if (v.replace(/\D/g, "").length === 11) {
+      return "";
     }
-    return 'Insira um telefone valido';
+    return "Insira um telefone valido";
   };
 
   Igual = (v: string, s: string, message: string): string => {
     if (v === s) {
-      return '';
+      return "";
     }
     return message;
   };
   Cpf = (v: string) => {
     if (v.length === 14) {
-      return '';
+      return "";
     }
-    return 'Insira um cpf valido';
+    return "Insira um cpf valido";
   };
 
   Cep = (v: string) => {
     if (v.length === 9) {
-      return '';
+      return "";
     }
-    return 'Insira um cep valido';
+    return "Insira um cep valido";
   };
 }
 

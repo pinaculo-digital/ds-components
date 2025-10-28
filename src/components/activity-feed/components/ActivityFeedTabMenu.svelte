@@ -1,4 +1,4 @@
-<script lang="ts" module>
+<script lang="ts">
   interface Props {
     activeTab: string;
     dividers: {
@@ -6,9 +6,7 @@
       count: number;
     }[][];
   }
-</script>
 
-<script lang="ts">
   let { activeTab = $bindable(), dividers }: Props = $props();
 </script>
 

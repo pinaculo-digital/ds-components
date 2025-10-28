@@ -1,9 +1,9 @@
 <script lang="ts" module>
-  import DataRange from '$components/assets/calendar/DataRange.svelte';
+  import DataRange from './DataRange.svelte';
   import InputWrapper from '$components/elements/wrappers/InputWrapper.svelte';
-  import s from '$lib/sanitizers/sanitizer';
-  import handleDate from '$lib/sanitizers/time';
-  import sinalizador from '$lib/utils/signal.svelte';
+  import s from '../../../lib/sanitizers/sanitizer';
+  import handleDate from '../../../lib/sanitizers/time';
+  import sinalizador from '../../../lib/utils/signal.svelte';
 
   interface Props {
     value: string;
@@ -12,7 +12,6 @@
     valueFormat?: (v: { start: Date | null; end: Date | null }) => void;
     placeholder: string;
     required?: boolean;
-
     validate?: () => string;
     subLabel?: string;
     tip?: string;

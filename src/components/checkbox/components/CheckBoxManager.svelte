@@ -1,5 +1,5 @@
 <script lang="ts" module>
-  import { type AnyPrimitive } from '$lib/utils/types';
+  import { type AnyPrimitive } from '../../../lib/utils/types';
   import Check from './Check.svelte';
 
   interface Props {
