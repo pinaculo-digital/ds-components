@@ -3,6 +3,7 @@
     "target": "ES2022",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
+    "types": ["svelte"],
     "rootDir": "src",
     "outDir": "dist",
     "declaration": true,
@@ -10,5 +11,5 @@
     "allowSyntheticDefaultImports": true,
     "strict": true
   },
-  "include": ["src"]
+  "include": ["src/**/*", "src/**/*.svelte"]
 }

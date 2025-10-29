@@ -1,41 +1,41 @@
-import repo from "../repository/main";
+// import repo from "../repository/main.js";
 
-class ThemeManager {
-  theme = $state<"light" | "dark">("light");
+// class ThemeManager {
+//   theme = $state<"light" | "dark">("light");
 
-  constructor() {
-    this.theme = "light";
-  }
+//   constructor() {
+//     this.theme = "light";
+//   }
 
-  setDarkMode() {
-    if (window === null || window === undefined) return;
-    window.document.querySelector("html")!.setAttribute("data-theme", "dark");
-    window.document.querySelector("body")?.classList.add("dark");
-    this.theme = "dark";
-    this.save();
-  }
+//   setDarkMode() {
+//     if (window === null || window === undefined) return;
+//     window.document.querySelector("html")!.setAttribute("data-theme", "dark");
+//     window.document.querySelector("body")?.classList.add("dark");
+//     this.theme = "dark";
+//     this.save();
+//   }
 
-  setLightMode() {
-    if (window === null || window === undefined) return;
-    window.document.querySelector("html")!.setAttribute("data-theme", "light");
-    window.document.querySelector("body")?.classList.remove("dark");
-    this.theme = "light";
-    this.save();
-  }
+//   setLightMode() {
+//     if (window === null || window === undefined) return;
+//     window.document.querySelector("html")!.setAttribute("data-theme", "light");
+//     window.document.querySelector("body")?.classList.remove("dark");
+//     this.theme = "light";
+//     this.save();
+//   }
 
-  switch() {
-    if (this.theme === "dark") {
-      this.setLightMode();
-      return;
-    }
-    this.setDarkMode();
-  }
+//   switch() {
+//     if (this.theme === "dark") {
+//       this.setLightMode();
+//       return;
+//     }
+//     this.setDarkMode();
+//   }
 
-  save() {
-    repo.storage.storeData("tema", this.theme);
-  }
-}
+//   save() {
+//     repo.storage.storeData("tema", this.theme);
+//   }
+// }
 
-const themeManager = new ThemeManager();
+// const themeManager = new ThemeManager();
 
-export default themeManager;
+// export default themeManager;
