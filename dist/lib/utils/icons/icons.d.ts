@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export declare const icons: readonly [{
     readonly name: "align-ui";
     readonly path: string;
@@ -8264,3 +8265,11 @@ export declare const icons: readonly [{
     readonly name: "flower-fill";
     readonly path: string;
 }];
+=======
+type Icon = {
+    name: string;
+    path: string;
+};
+export declare const iconsList: Icon[];
+export {};
+>>>>>>> fae945514fecb9d2f7205440a0930cdbb50cde3d

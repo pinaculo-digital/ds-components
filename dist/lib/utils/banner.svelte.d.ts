@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import ShortUniqueId from 'short-unique-id';
+=======
+import { default as ShortUniqueId } from 'short-unique-id';
+>>>>>>> fae945514fecb9d2f7205440a0930cdbb50cde3d
 type Status = 'information' | 'success' | 'error' | 'warning' | 'faded';
 type Tema = 'base' | 'light' | 'lighter' | 'transparent';
 type Propriedades = {

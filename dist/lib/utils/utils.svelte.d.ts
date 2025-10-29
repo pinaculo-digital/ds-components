@@ -15,6 +15,15 @@ export declare const cssVar: (name: string) => string;
  * @param {string} text - O texto a ser copiado para a área de transferência.
  */
 export declare function copyToClipboard(text: string): void;
+<<<<<<< HEAD
+=======
+/**
+ * Exibe mensagens no console apenas em ambiente de desenvolvimento (localhost).
+ *
+ * @param {string} text - A mensagem a ser exibida no console.
+ */
+export declare function consoleDev(text: any): void;
+>>>>>>> fae945514fecb9d2f7205440a0930cdbb50cde3d
 export declare function formatarNumero(numero: string): string;
 export declare function formatCNPJ(cnpj: string): string;
 export declare function formatarRedeSocial(url: string): string;

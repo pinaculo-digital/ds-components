@@ -1,9 +1,22 @@
 export type Color = (typeof colors)[number];
+<<<<<<< HEAD
 export type ColorName = Color['name'];
+=======
+export type ColorName = Color["name"];
+>>>>>>> fae945514fecb9d2f7205440a0930cdbb50cde3d
 export declare const colors: readonly [{
     readonly name: "white";
     readonly value: "#FFFFFF";
 }, {
+<<<<<<< HEAD
+=======
+    readonly name: "black";
+    readonly value: "#000000";
+}, {
+    readonly name: "transparent";
+    readonly value: "transparent";
+}, {
+>>>>>>> fae945514fecb9d2f7205440a0930cdbb50cde3d
     readonly name: "neutral-0";
     readonly value: "var(--color-neutral-0)";
 }, {

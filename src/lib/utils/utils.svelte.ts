@@ -24,11 +24,14 @@ export const colorOpacity = (c: string, opacity: number): string => {
 
   // HEX (ex: #fff, #ffffff)
   if (c.startsWith("#")) {
+  if (c.startsWith("#")) {
     let hex = c.slice(1);
     if (hex.length === 3) {
       hex = hex
         .split("")
+        .split("")
         .map((char) => char + char)
+        .join("");
         .join("");
     }
     if (hex.length === 6) {
@@ -82,6 +85,7 @@ export function formatarNumero(numero: string) {
   numero = numero.replaceAll(/\D/g, "");
 
   return numero.replace(/(\d{2})(\d)(\d{4})(\d{4})/, "($1) $2 $3-$4");
+  return numero.replace(/(\d{2})(\d)(\d{4})(\d{4})/, "($1) $2 $3-$4");
 }
 
 export function formatCNPJ(cnpj: string) {
@@ -92,6 +96,8 @@ export function formatCNPJ(cnpj: string) {
 export function formatarRedeSocial(url: string) {
   if (url === null || url === "" || url === undefined) return url;
   const username = url.split(".com/")[1].replace("/", "");
+  if (url === null || url === "" || url === undefined) return url;
+  const username = url.split(".com/")[1].replace("/", "");
   return `@${username}`;
 }
 
@@ -99,8 +105,12 @@ export function capitalizar(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-export const validarSeSenhasSaoIguais = (password: string, repeatPassword: string) => {
+export const validarSeSenhasSaoIguais = (
+  password: string,
+  repeatPassword: string
+) => {
   if (password != repeatPassword || password.length === 0) {
+    toast.error("Erro no formulário", "As senhas não correspondem.");
     toast.error("Erro no formulário", "As senhas não correspondem.");
     return false;
   }

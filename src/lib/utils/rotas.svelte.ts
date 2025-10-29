@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import { IconName } from "./icons/icons.type.js";
+=======
+// import { ENUM_PAGE_URL } from '../../../lib/enums/page.enum';
+import type { IconName } from "../utils/icons/icons.type";
+>>>>>>> fae945514fecb9d2f7205440a0930cdbb50cde3d
 
 export const rotasPublicas = ["/cadastro", "/recuperar-conta", "/redefinir-senha"];
 

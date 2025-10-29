@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import type { props } from "../../types/ds-types.js";
+=======
+import type { props } from "./ds-types";
+>>>>>>> fae945514fecb9d2f7205440a0930cdbb50cde3d
 class GenerationTypesObject {
   private getMockValue(typeText: string): any {
     const type = typeText.replace(/\s/g, "").replace(/\|undefined/g, "");
