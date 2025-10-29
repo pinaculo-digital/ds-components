@@ -1,4 +1,4 @@
-import type { props } from "../../../lib/types/ds-types";
+import type { props } from "../../types/ds-types.js";
 class GenerationTypesObject {
   private getMockValue(typeText: string): any {
     const type = typeText.replace(/\s/g, "").replace(/\|undefined/g, "");
@@ -22,9 +22,7 @@ class GenerationTypesObject {
 
     if (type.includes("|")) {
       const parts = type.split("|").map((p) => p.trim());
-      const known = parts.find((t) =>
-        ["string", "number", "boolean"].includes(t)
-      );
+      const known = parts.find((t) => ["string", "number", "boolean"].includes(t));
       return known ? this.getMockValue(known) : parts[0];
     }
 

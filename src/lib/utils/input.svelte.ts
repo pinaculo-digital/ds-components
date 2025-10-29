@@ -1,4 +1,4 @@
-import validateInputs from "../../../lib/sanitizers/validateFormats";
+import validateInputs from "../sanitizers/validateFormats.js";
 
 class ValidacaoInputNormalizada {
   Email = (v: string): string => {

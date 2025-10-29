@@ -1,6 +1,6 @@
-import ShortUniqueId from 'short-unique-id';
+import ShortUniqueId from "short-unique-id";
 
-type Status = 'neutral' | 'success' | 'error' | 'alert';
+type Status = "neutral" | "success" | "error" | "alert";
 type Propriedades = {
   duracao?: number;
   status?: Status;
@@ -15,28 +15,28 @@ type Toast = {
 class ToastManager {
   toasts = $state<Toast[]>([]);
 
-  tema = $state<'colorful' | 'standard'>('standard');
+  tema = $state<"colorful" | "standard">("standard");
 
   uuid = new ShortUniqueId({ length: 20 });
 
   success(titulo: string, conteudo: string, propriedades?: Propriedades) {
     this.push(titulo, conteudo, {
       ...propriedades,
-      status: 'success',
+      status: "success",
     });
   }
 
   error(titulo: string, conteudo: string, propriedades?: Propriedades) {
     this.push(titulo, conteudo, {
       ...propriedades,
-      status: 'error',
+      status: "error",
     });
   }
 
   alert(titulo: string, conteudo: string, propriedades?: Propriedades) {
     this.push(titulo, conteudo, {
       ...propriedades,
-      status: 'alert',
+      status: "alert",
     });
   }
 
@@ -46,7 +46,7 @@ class ToastManager {
     if (!propriedades) propriedades = {};
 
     const props = {
-      status: propriedades.status ?? 'neutral',
+      status: propriedades.status ?? "neutral",
       duracao: propriedades.duracao ?? 6000,
     };
     this.toasts.push({
@@ -67,8 +67,8 @@ class ToastManager {
   }
 
   changeTheme() {
-    if (this.tema === 'colorful') return (this.tema = 'standard');
-    if (this.tema === 'standard') return (this.tema = 'colorful');
+    if (this.tema === "colorful") return (this.tema = "standard");
+    if (this.tema === "standard") return (this.tema = "colorful");
   }
 }
 

@@ -1,13 +1,6 @@
-// import { ENUM_PAGE_URL } from '../../../lib/enums/page.enum';
-import type { IconName } from "$components/assets/icon/icons.type";
-import type { Component } from "svelte";
-import type { SVGAttributes } from "svelte/elements";
+import { IconName } from "./icons/icons.type.js";
 
-export const rotasPublicas = [
-  "/cadastro",
-  "/recuperar-conta",
-  "/redefinir-senha",
-];
+export const rotasPublicas = ["/cadastro", "/recuperar-conta", "/redefinir-senha"];
 
 export const rotas: {
   modulo: ("admin" | "cliente" | "assinante" | "lojista")[];
@@ -95,22 +88,14 @@ export const rotasDS: {
     modulo: ["dev"],
     label: "Core Elements",
     link: "/ds/core-elements",
-    filhos: [
-      "/ds/core-elements/typography",
-      "/ds/core-elements/color-palette",
-      "/ds/core-elements/border-radius",
-    ],
+    filhos: ["/ds/core-elements/typography", "/ds/core-elements/color-palette", "/ds/core-elements/border-radius"],
     Icon: "building-fill",
   },
   {
     modulo: ["dev"],
     label: "Base Components",
     link: "/ds/base-components",
-    filhos: [
-      "/ds/base-components/typography",
-      "/ds/base-components/color-palette",
-      "/ds/base-components/border-radius",
-    ],
+    filhos: ["/ds/base-components/typography", "/ds/base-components/color-palette", "/ds/base-components/border-radius"],
     Icon: "building-line",
   },
 ];

@@ -1,8 +1,7 @@
-import { page } from '$app/stores';
-import { get } from 'svelte/store';
-import toast from './toast.svelte';
 import { onMount } from 'svelte';
-import { finishBoot, startSkeleton, stopSkeleton } from '$repository/storage.svelte';
+import { finishBoot, startSkeleton, stopSkeleton } from '../../stores/skeleton.svelte.js';
+import toast from './toast.svelte.js';
+
 
 /**
  * Executa uma ação com base na tecla pressionada.
@@ -35,19 +34,19 @@ export const colorOpacity = (c: string, opacity: number): string => {
         .join('');
     }
     if (hex.length === 6) {
-      r = parseInt(hex.slice(0, 2), 16);
-      g = parseInt(hex.slice(2, 4), 16);
-      b = parseInt(hex.slice(4, 6), 16);
+      r = Number.parseInt(hex.slice(0, 2), 16);
+      g = Number.parseInt(hex.slice(2, 4), 16);
+      b = Number.parseInt(hex.slice(4, 6), 16);
     }
   }
 
   // RGB ou RGBA (ex: rgb(255,255,255), rgba(255,255,255,1))
   else if (c.startsWith('rgb')) {
-    const matches = c.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+    const matches = new RegExp(/rgba?\((\d+),\s*(\d+),\s*(\d+)/).exec(c);
     if (matches) {
-      r = parseInt(matches[1]);
-      g = parseInt(matches[2]);
-      b = parseInt(matches[3]);
+      r = Number.parseInt(matches[1]);
+      g = Number.parseInt(matches[2]);
+      b = Number.parseInt(matches[3]);
     }
   }
 
@@ -81,24 +80,14 @@ export function copyToClipboard(text: string) {
   navigator.clipboard.writeText(text);
 }
 
-/**
- * Exibe mensagens no console apenas em ambiente de desenvolvimento (localhost).
- *
- * @param {string} text - A mensagem a ser exibida no console.
- */
-export function consoleDev(text: any) {
-  const url = get(page).url.origin;
-  if (url.includes('http://localhost')) console.log(text);
-}
-
 export function formatarNumero(numero: string) {
-  numero = numero.replace(/\D/g, '');
+  numero = numero.replaceAll(/\D/g, '');
 
   return numero.replace(/(\d{2})(\d)(\d{4})(\d{4})/, '($1) $2 $3-$4');
 }
 
 export function formatCNPJ(cnpj: string) {
-  cnpj = cnpj.replace(/\D/g, '');
+  cnpj = cnpj.replaceAll(/\D/g, '');
   return cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
 }
 
