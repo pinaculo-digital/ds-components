@@ -1,7 +1,5 @@
 // import { ENUM_PAGE_URL } from '../../../lib/enums/page.enum';
-import type { IconName } from "$components/assets/icon/icons.type";
-import type { Component } from "svelte";
-import type { SVGAttributes } from "svelte/elements";
+import type { IconName } from "../utils/icons/icons.type";
 
 export const rotasPublicas = [
   "/cadastro",
