@@ -1,9 +1,9 @@
-import { icons } from "./icons.js";
+import { iconsList } from "./icons.js";
 
-export type Icon = (typeof icons)[number];
+export type Icon = (typeof iconsList)[number];
 export type IconName = Icon["name"];
 
-export const iconsMap: Record<IconName, Icon> = icons.reduce(
+export const iconsMap: Record<IconName, Icon> = iconsList.reduce(
   (acc, icon) => {
     acc[icon.name] = icon;
     return acc;
