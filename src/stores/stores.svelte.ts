@@ -1,1 +1,1 @@
-export * from "./skeleton.svelte";
+export * from "./skeleton.svelte.js";

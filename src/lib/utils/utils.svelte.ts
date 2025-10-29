@@ -1,7 +1,5 @@
-import { onMount } from 'svelte';
-import { finishBoot, startSkeleton, stopSkeleton } from '../../stores/skeleton.svelte.js';
-import toast from './toast.svelte.js';
-
+import { onMount } from "svelte";
+import toast from "./toast.svelte.js";
 
 /**
  * Executa uma ação com base na tecla pressionada.
@@ -25,13 +23,13 @@ export const colorOpacity = (c: string, opacity: number): string => {
   c = c.trim().toLowerCase();
 
   // HEX (ex: #fff, #ffffff)
-  if (c.startsWith('#')) {
+  if (c.startsWith("#")) {
     let hex = c.slice(1);
     if (hex.length === 3) {
       hex = hex
-        .split('')
+        .split("")
         .map((char) => char + char)
-        .join('');
+        .join("");
     }
     if (hex.length === 6) {
       r = Number.parseInt(hex.slice(0, 2), 16);
@@ -41,7 +39,7 @@ export const colorOpacity = (c: string, opacity: number): string => {
   }
 
   // RGB ou RGBA (ex: rgb(255,255,255), rgba(255,255,255,1))
-  else if (c.startsWith('rgb')) {
+  else if (c.startsWith("rgb")) {
     const matches = new RegExp(/rgba?\((\d+),\s*(\d+),\s*(\d+)/).exec(c);
     if (matches) {
       r = Number.parseInt(matches[1]);
@@ -81,19 +79,19 @@ export function copyToClipboard(text: string) {
 }
 
 export function formatarNumero(numero: string) {
-  numero = numero.replaceAll(/\D/g, '');
+  numero = numero.replaceAll(/\D/g, "");
 
-  return numero.replace(/(\d{2})(\d)(\d{4})(\d{4})/, '($1) $2 $3-$4');
+  return numero.replace(/(\d{2})(\d)(\d{4})(\d{4})/, "($1) $2 $3-$4");
 }
 
 export function formatCNPJ(cnpj: string) {
-  cnpj = cnpj.replaceAll(/\D/g, '');
-  return cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
+  cnpj = cnpj.replaceAll(/\D/g, "");
+  return cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5");
 }
 
 export function formatarRedeSocial(url: string) {
-  if (url === null || url === '' || url === undefined) return url;
-  const username = url.split('.com/')[1].replace('/', '');
+  if (url === null || url === "" || url === undefined) return url;
+  const username = url.split(".com/")[1].replace("/", "");
   return `@${username}`;
 }
 
@@ -103,30 +101,30 @@ export function capitalizar(string: string) {
 
 export const validarSeSenhasSaoIguais = (password: string, repeatPassword: string) => {
   if (password != repeatPassword || password.length === 0) {
-    toast.error('Erro no formulário', 'As senhas não correspondem.');
+    toast.error("Erro no formulário", "As senhas não correspondem.");
     return false;
   }
   return true;
 };
 
-export function onMountWithSkeleton(fn: () => void | Promise<void>) {
-  onMount(() => {
-    let done = false;
-    (async () => {
-      startSkeleton();
-      try {
-        await fn();
-      } finally {
-        stopSkeleton();
-        finishBoot();
-        done = true;
-      }
-    })();
-    return () => {
-      if (!done) {
-        stopSkeleton();
-        finishBoot();
-      }
-    };
-  });
-}
+// export function onMountWithSkeleton(fn: () => void | Promise<void>) {
+//   onMount(() => {
+//     let done = false;
+//     (async () => {
+//       startSkeleton();
+//       try {
+//         await fn();
+//       } finally {
+//         stopSkeleton();
+//         finishBoot();
+//         done = true;
+//       }
+//     })();
+//     return () => {
+//       if (!done) {
+//         stopSkeleton();
+//         finishBoot();
+//       }
+//     };
+//   });
+// }

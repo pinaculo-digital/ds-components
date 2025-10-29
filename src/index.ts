@@ -1,1 +1,1 @@
-export * from "./stores/stores.svelte";
+export { onSkMount, skeleton } from "./stores/stores.svelte.js";

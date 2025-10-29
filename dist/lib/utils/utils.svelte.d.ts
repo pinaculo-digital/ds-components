@@ -20,4 +20,3 @@ export declare function formatCNPJ(cnpj: string): string;
 export declare function formatarRedeSocial(url: string): string;
 export declare function capitalizar(string: string): string;
 export declare const validarSeSenhasSaoIguais: (password: string, repeatPassword: string) => boolean;
-export declare function onMountWithSkeleton(fn: () => void | Promise<void>): void;
