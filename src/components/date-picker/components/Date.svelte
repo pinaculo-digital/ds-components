@@ -3,7 +3,7 @@
   import InputWrapper from '$components/elements/wrappers/InputWrapper.svelte';
   import s from '../../../lib/sanitizers/sanitizer';
   import handleDate from '../../../lib/sanitizers/time';
-  import sinalizador from '../../../lib/utils/signal.svelte';
+  import sinalizador from '../../../lib/utils/signal.svelte.js';
 
   interface Props {
     value: string;

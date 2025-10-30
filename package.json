@@ -29,11 +29,14 @@
   "devDependencies": {
     "@sveltejs/package": "^2.3.0",
     "@sveltejs/vite-plugin-svelte": "^4.0.0",
+    "date-fns": "^4.1.0",
+    "short-unique-id": "^5.3.2",
     "svelte": "^5.39.11",
     "typescript": "^5.6.2",
     "vite": "^5.4.0",
-    "vite-plugin-dts": "^4.5.4",
-    "date-fns": "^4.1.0",
-    "short-unique-id": "^5.3.2"
+    "vite-plugin-dts": "^4.5.4"
+  },
+  "dependencies": {
+    "rollup": "^4.52.5"
   }
 }

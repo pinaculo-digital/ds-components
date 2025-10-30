@@ -1,7 +1,7 @@
 <script lang="ts">
   import { quadInOut } from 'svelte/easing';
   import { flySlide } from '../../../lib/animations/transitions';
-  import banner from '../../../lib/utils/banner.svelte';
+  import banner from '../../../lib/utils/banner.svelte.js';
   import Banner from './Banner.svelte';
 
   interface Props {

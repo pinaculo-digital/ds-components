@@ -2,7 +2,7 @@
   import DayMode from './DayMode.svelte';
   import { fade, fly } from 'svelte/transition';
   import { quadInOut } from 'svelte/easing';
-  import { portal } from '../../../lib/actions/portal.svelte';
+  import { portal } from '../../../lib/actions/portal.svelte.js';
   import type { RangeType, RangeString } from '../../../lib/types/ordinary';
 
   interface Props {

@@ -2,7 +2,7 @@
   import type { Snippet } from 'svelte';
   import Avatar from '../../avatar/components/Avatar.svelte';
   import handleDate from '../../../lib/sanitizers/time.js';
-  import { ColorName, getColor } from '../../../lib/utils/colors/colors.utils.js';
+  import { ColorName, getColor } from '../../../lib/utils/colors/colors-utils.js';
 
   interface Props {
     optionsMenu?: Snippet;

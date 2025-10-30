@@ -17,6 +17,16 @@
       "@components/*": ["./src/components/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.svelte", "src/**/*.d.ts", "svelte-runes.d.ts"],
-  "exclude": ["dist", "node_modules", "node_modules/.svelte2tsx-language-server-files", "src/lib/**"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.js",
+    "src/**/*.svelte",
+    "src/**/*.d.ts",
+    "svelte-runes.d.ts"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "node_modules/.svelte2tsx-language-server-files"
+  ]
 }
