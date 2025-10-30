@@ -1,6 +1,12 @@
 <script lang="ts">
-  import { IconName, getIcon } from '../../lib/utils/icons/icons-type.js'
-  import { getColor, ColorName } from '../../lib/utils/colors/colors-utils.js'
+  // 1) valores
+  import { getColor } from '../../lib/utils/colors/colors-utils.js';
+  import { getIcon } from '../../lib/utils/icons/icons-type.js';
+
+  // 2) tipos  ← AQUI entra o ColorName também
+  import type { ColorName } from '../../lib/utils/colors/colors-utils.js';
+  import type { IconName } from '../../lib/utils/icons/icons-type.js';
+  import type { SVGAttributes } from 'svelte/elements';
 
   type OpticalSize = 16 | 18 | 20 | 24 | 32 | 40;
 
@@ -8,10 +14,15 @@
     opticalSize?: OpticalSize;
     fillColor?: ColorName;
     type: IconName;
-    svgAtributes?: any;
+    svgAtributes?: SVGAttributes<SVGSVGElement>;
   }
 
-  let { opticalSize = 20, fillColor = 'neutral-950', type, svgAtributes }: Props = $props();
+  let {
+    opticalSize = 20,
+    fillColor = 'neutral-950',
+    type,
+    svgAtributes
+  }: Props = $props();
 
   const [width, height] = Array(2).fill(opticalSize);
 
@@ -32,5 +43,5 @@
   fill={renderColor(fillColor)}
   {...svgAtributes}
 >
-  <path d={renderIcon(type)}></path>
+  <path d={renderIcon(type)} />
 </svg>

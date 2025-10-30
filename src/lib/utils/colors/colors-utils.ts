@@ -1,4 +1,4 @@
-export const colors = [
+const colors = [
   { name: "white", value: "#FFFFFF" },
   { name: "black", value: "#000000" },
   { name: "transparent", value: "transparent" },
@@ -206,13 +206,10 @@ export const colors = [
 export type Color = (typeof colors)[number];
 export type ColorName = Color["name"];
 
-export const colorsMap: Record<ColorName, Color> = colors.reduce(
-  (acc, color) => {
-    acc[color.name] = color;
-    return acc;
-  },
-  {} as Record<ColorName, Color>
-);
+export const colorsMap: Record<ColorName, Color> = colors.reduce((acc, color) => {
+  acc[color.name] = color;
+  return acc;
+}, {} as Record<ColorName, Color>);
 
 export function getColor<N extends ColorName>(name: N): Color {
   const found = colorsMap[name];
