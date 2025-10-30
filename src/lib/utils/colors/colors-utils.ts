@@ -1,6 +1,3 @@
-export type Color = (typeof colors)[number];
-export type ColorName = Color["name"];
-
 export const colors = [
   { name: "white", value: "#FFFFFF" },
   { name: "black", value: "#000000" },
@@ -205,6 +202,9 @@ export const colors = [
   { name: "alpha-black-40", value: "var(--color-alpha-black-40)" },
   { name: "alpha-black-50", value: "var(--color-alpha-black-50)" },
 ] as const;
+
+export type Color = (typeof colors)[number];
+export type ColorName = Color["name"];
 
 export const colorsMap: Record<ColorName, Color> = colors.reduce(
   (acc, color) => {

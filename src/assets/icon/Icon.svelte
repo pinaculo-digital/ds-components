@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { getColor, ColorName } from '../../lib/utils/colors/colors-utils.js'
   import { IconName, getIcon } from '../../lib/utils/icons/icons-type.js'
+  import { getColor, ColorName } from '../../lib/utils/colors/colors-utils.js'
 
   type OpticalSize = 16 | 18 | 20 | 24 | 32 | 40;
 
