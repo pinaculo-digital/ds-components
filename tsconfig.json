@@ -9,7 +9,14 @@
     "declaration": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true
+    "strict": true,
+    "skipLibCheck": true,
+    "paths": {
+      "pina-components": ["./src/index.ts"],
+      "pina-components/*": ["./src/*"],
+      "@components/*": ["./src/components/*"]
+    }
   },
-  "include": ["src/**/*", "src/**/*.svelte"]
+  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.svelte", "src/**/*.d.ts", "svelte-runes.d.ts"],
+  "exclude": ["dist", "node_modules", "node_modules/.svelte2tsx-language-server-files", "src/lib/**"]
 }

@@ -1,7 +1,11 @@
-<script lang="ts">
+<!-- <script lang="ts">
+  import { getColor } from '../../lib/utils/colors/colors.utils.js';
+  import { getIcon } from '../../lib/utils/icons/icons.type.js';
+
+  // 👇 tipos vêm separados, com "import type"
+  import type { ColorName } from '../../lib/utils/colors/colors.utils.js';
+  import type { IconName } from '../../lib/utils/icons/icons.type.js';
   import type { SVGAttributes } from 'svelte/elements';
-  import { getColor, type ColorName } from '../../lib/utils/colors/colors.utils'
-  import { getIcon, type IconName } from './icons.type';
 
   type OpticalSize = 16 | 18 | 20 | 24 | 32 | 40;
 
@@ -34,4 +38,4 @@
   {...svgAtributes}
 >
   <path d={renderIcon(type)}></path>
-</svg>
+</svg> -->

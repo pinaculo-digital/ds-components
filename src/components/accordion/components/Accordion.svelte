@@ -1,6 +1,6 @@
 <script lang="ts" module>
   import Icon from '../../../assets/icon/Icon.svelte';
-  import type { IconName } from '../../../assets/icon/icons.type';
+  import { IconName } from '../../../lib/utils/icons/icons.type.js';
 
   interface Props {
     leftIcon?: IconName;
