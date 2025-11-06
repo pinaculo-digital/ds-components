@@ -1,11 +1,12 @@
 <script lang="ts" module>
-  import handleDate from '../../../lib/sanitizers/time';
+  
   import { slide } from 'svelte/transition';
   import { onMount } from 'svelte';
-  import Botao from '../buttons/Botao.svelte';
-  import s from '../../../lib/sanitizers/sanitizer';
-  import PopUp from '../modals/PopUp.svelte';
-  import type { RangeType } from '../../../lib/types/ordinary';
+  import Botao from '../../button/components/Botao.svelte';
+  import s from '../../../lib/sanitizers/sanitizer.js';
+  import PopUp from '../../modal/components/PopUp.svelte';
+  import type { RangeType } from '../../../lib/types/ordinary.js';
+  import handleDate from '../../../lib/sanitizers/time.js';
 
   interface Props {
     isVisible: boolean;
@@ -302,17 +303,14 @@
           </p>
         {/if}
         <div class="grid w-full grid-cols-2 gap-4">
-          <Botao tema="gray-transparent" onClick={resetAll}>Limpar</Botao>
-          <Botao
-            tema="primary"
-            onClick={() => {
+          <Botao textColor='neutral-600' bgColor='transparent' click={resetAll} label="Limpar"/>
+          <Botao textColor='neutral-600' bgColor='transparent'
+            click={() => {
               if (onSelecionar && range) {
                 return onSelecionar(range);
               }
             }}
-          >
-            Selecionar
-          </Botao>
+            label="Selecionar"/>
         </div>
       </div>
     {/if}
@@ -326,13 +324,6 @@
     aria-label={arial}
     onclick={onClick}
   >
-    <!-- <SvgCaret
-      props={{
-        class: 'fill-sub-600 w-2 group-hover:fill-white ' + cssArrow,
-        width: 18,
-        height: 18,
-      }}
-    /> -->
   </button>
 {/snippet}
 
@@ -456,23 +447,9 @@
   <PopUp bind:open={selectMonth} target="#dataRange">
     <div class="text-strong-950/80 bg-white-0 flex w-[200px] flex-col items-center justify-between gap-1 text-[22px]">
       <button onclick={() => prevMonth(secondary)} aria-label="Mês anterior">
-        <!-- <SvgCaret
-          props={{
-            width: 24,
-            height: 24,
-            class: 'rotate-[180deg] scale-x-[1.3]',
-          }}
-        /> -->
       </button>
       {monthNames[currentMonth]}
       <button onclick={() => nextMonth(secondary)} aria-label="Proximo mês">
-        <!-- <SvgCaret
-          props={{
-            width: 24,
-            height: 24,
-            class: 'scale-x-[1.3]',
-          }}
-        /> -->
       </button>
     </div>
   </PopUp>
@@ -504,10 +481,10 @@
         }}
       />
       <div class="grid w-full grid-cols-2 gap-4">
-        <Botao tema="gray-transparent" onClick={resetAll}>Cancelar</Botao>
+        <Botao textColor='neutral-600' bgColor='transparent' click={resetAll} label="Camcelar"/>
         <Botao
-          tema="primary"
-          onClick={() => {
+          textColor='neutral-600' bgColor='transparent'
+          click={() => {
             if (inputYear.length < 4) return;
             selectYear = false;
             if (secondary) {
@@ -516,9 +493,7 @@
             }
             year = parseInt(inputYear.slice(0, 4));
           }}
-        >
-          Selecionar
-        </Botao>
+          label="Selecionar"/>
       </div>
     </div>
   </PopUp>

@@ -1,6 +1,7 @@
 <script lang="ts" module>
-  import { appendFiles } from '$components/assets/helpers';
-  import type { FieldSetup } from '$repository/types';
+  import { appendFiles } from "../../../lib/utils/helpers.js";
+  import type { FieldSetup } from "../../../lib/utils/types.js";
+
 
   interface Props {
     data: FieldSetup<(File | null)[]>;
@@ -15,6 +16,7 @@
 
   let files = $state<FileList>();
   let files64 = $derived<string | undefined>(files ? URL.createObjectURL(files[0]) : undefined);
+    // @ts-ignore
   const accept = $derived(data.meta?.acceptedFormats?.map((format) => ` .${format}`).toString() ?? '');
 
   let isDragging = $state(false);
@@ -51,7 +53,7 @@
       <p class="text-14 text-strong-950 font-medium">
         Arraste ou selecione um {multiple ? 'ou mais arquivos' : 'arquivo'} ({type}).
       </p>
-      <p class="text-12 text-sub-600 font-medium">PNG ou JPG, até {data.meta?.maxHintMB} MB.</p>
+      <!-- <p class="text-12 text-sub-600 font-medium">PNG ou JPG, até {data.meta?.maxHintMB} MB.</p> -->
     {:else}
       <p class="text-14 text-strong-950 font-medium">Arraste os arquivos aqui</p>
     {/if}

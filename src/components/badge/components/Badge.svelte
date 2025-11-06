@@ -1,8 +1,10 @@
 <script lang="ts" module>
-  import Icon from '../../icons/components/Icon.svelte';
+  import type { ColorName } from '../../../lib/utils/colors/colors-utils.js';
+  import type { IconName } from '../../../lib/utils/icons/icons-type.js';
+  import { getColor } from '../../../lib/utils/colors/colors-utils.js';
 
-  import { getColor, type ColorName } from '../../../lib/utils/colors/colors.utils';
-  import type { IconName } from '../../../lib/utils/icons/icons.type';
+  import Icon from '../../../assets/icon/Icon.svelte';
+
 
   interface Props {
     theme: ColorName;

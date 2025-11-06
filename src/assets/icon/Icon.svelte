@@ -1,9 +1,7 @@
 <script lang="ts">
-  // 1) valores
   import { getColor } from '../../lib/utils/colors/colors-utils.js';
   import { getIcon } from '../../lib/utils/icons/icons-type.js';
 
-  // 2) tipos  ← AQUI entra o ColorName também
   import type { ColorName } from '../../lib/utils/colors/colors-utils.js';
   import type { IconName } from '../../lib/utils/icons/icons-type.js';
   import type { SVGAttributes } from 'svelte/elements';

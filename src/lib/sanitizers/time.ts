@@ -12,10 +12,7 @@ export class DataSanitizer {
    * @param {string} [dateFormat='dd/MM/yyyy'] - O formato desejado para a data.
    * @returns {string} - A data formatada como uma string.
    */
-  static readonly formatDate = (
-    date: Date,
-    dateFormat: string = "dd/MM/yyyy"
-  ): string => {
+  formatDate = (date: Date, dateFormat: string = "dd/MM/yyyy"): string => {
     return format(new Date(date), dateFormat);
   };
 
@@ -70,7 +67,7 @@ export class DataSanitizer {
       return `${dayOfWeek} às ${hours}:${minutes}`;
     }
 
-    return DataSanitizer.formatDate(date);
+    return this.formatDate(date, "dd/MM/yyyy");
   }
   /**
    * Função para adicionar dias a uma data.

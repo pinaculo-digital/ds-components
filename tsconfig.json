@@ -13,7 +13,7 @@
     "skipLibCheck": true,
     "paths": {
       "pina-components": ["./src/index.ts"],
-      "pina-components/*": ["./src/*"],
+      "../../../*": ["./src/*"],
       "@components/*": ["./src/components/*"]
     }
   },

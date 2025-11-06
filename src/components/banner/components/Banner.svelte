@@ -1,4 +1,7 @@
 <script lang="ts" module>
+  import Icon from '../../../assets/icon/Icon.svelte';
+  import type { IconName } from '../../../lib/utils/icons/icons-type.js';
+
   interface Props {
     icon: IconName;
     titulo?: string;
@@ -12,9 +15,6 @@
 </script>
 
 <script lang="ts">
-  import Icon from '$components/ds-components/icons/components/Icon.svelte';
-  import type { IconName } from '../../../lib/utils/icons/icons.type';
-
   let {
     titulo = 'Insira seu titulo aqui',
     descricao = 'Insira sua descrição aqui',

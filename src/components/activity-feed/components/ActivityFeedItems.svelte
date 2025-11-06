@@ -1,8 +1,9 @@
 <script lang="ts">
-  import type { Snippet } from 'svelte';
+  import type { ColorName } from '../../../lib/utils/colors/colors-utils.js';
+  import { getColor } from '../../../lib/utils/colors/colors-utils.js';
   import Avatar from '../../avatar/components/Avatar.svelte';
   import handleDate from '../../../lib/sanitizers/time.js';
-  import { ColorName, getColor } from '../../../lib/utils/colors/colors-utils.js';
+  import type { Snippet } from 'svelte';
 
   interface Props {
     optionsMenu?: Snippet;

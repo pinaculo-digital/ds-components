@@ -3,7 +3,7 @@
   import { fade, fly } from 'svelte/transition';
   import { quadInOut } from 'svelte/easing';
   import { portal } from '../../../lib/actions/portal.svelte.js';
-  import type { RangeType, RangeString } from '../../../lib/types/ordinary';
+  import type { RangeType, RangeString } from '../../../lib/types/ordinary.js';
 
   interface Props {
     range?: RangeType | undefined | null;

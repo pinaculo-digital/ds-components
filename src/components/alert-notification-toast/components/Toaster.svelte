@@ -1,7 +1,8 @@
 <script lang="ts" module>
-  import { quadInOut } from 'svelte/easing';
-  import { flySlide } from '../../../lib/animations/transitions';
   import toast from '../../../lib/utils/toast.svelte.js';
+
+  import { quadInOut } from 'svelte/easing';
+  import { flySlide } from '../../../lib/animations/transitions.js';
 </script>
 
 <script lang="ts">
