@@ -16,6 +16,7 @@ export interface MainComponentType {
   isActive: boolean;
   onClick: VoidFunction;
   disabled?: boolean;
+  hasError?: boolean;
 }
 export interface OptionComponentType {
   data: Option;

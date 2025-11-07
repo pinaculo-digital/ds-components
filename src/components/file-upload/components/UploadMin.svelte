@@ -1,6 +1,6 @@
 <script lang="ts" module>
-  import { appendFiles } from "../../../lib/utils/helpers.js";
   import type { FieldSetup } from "../../../lib/utils/types.js";
+  import { appendFiles } from "../../../lib/utils/helpers.js";
 
 
   interface Props {
