@@ -1,9 +1,9 @@
 <script lang="ts" module>
   import DataRange from './DataRange.svelte';
-  import InputWrapper from '$components/elements/wrappers/InputWrapper.svelte';
   import sinalizador from '../../../lib/utils/signal.svelte.js';
   import handleDate from '../../../lib/sanitizers/time.js';
   import s from '../../../lib/sanitizers/sanitizer.js';
+  import InputWrapper from '../../../assets/wrappers/InputWrapper.svelte';
 
   interface Props {
     value: string;

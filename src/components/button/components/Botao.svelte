@@ -1,10 +1,10 @@
 <script lang="ts">
   import Icon from '../../../assets/icon/Icon.svelte';
-  import LoaderSmooth from '$components/elements/loading/LoaderSmooth.svelte';
   
   import type { ColorName } from '../../../lib/utils/colors/colors-utils.js';
   import type { IconName } from '../../../lib/utils/icons/icons-type.js';
   import { getColor } from '../../../lib/utils/colors/colors-utils.js';
+  import LoaderSmooth from '../../../assets/loading/LoaderSmooth.svelte';
 
   interface Props {
     rightIcon?: IconName;

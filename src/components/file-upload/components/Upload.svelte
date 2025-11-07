@@ -1,5 +1,6 @@
 <script lang="ts" module>
-  import Label from '$components/assets/labels/Label.svelte';
+
+  import Label from '../../../assets/labels/Label.svelte';
   import { fileManager } from '../../../lib/actions/file.svelte.js';
 
   interface Props {
