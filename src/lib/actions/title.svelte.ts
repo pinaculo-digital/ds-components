@@ -1,10 +1,17 @@
-import TipAction from '$components/elements/card/TipAction.svelte';
-import { mount, unmount } from 'svelte';
-import type { Action } from 'svelte/action';
+//@ts-ignore
+import { TipAction } from "../../assets/wrappers/TipAction.svelte";
+import { mount, unmount } from "svelte";
+import type { Action } from "svelte/action";
 
 type Info = {
   text: string | null;
-  posTriangulo: 'top-middle' | 'top-left' | 'top-right' | 'bottom-middle' | 'bottom-left' | 'bottom-right';
+  posTriangulo:
+    | "top-middle"
+    | "top-left"
+    | "top-right"
+    | "bottom-middle"
+    | "bottom-left"
+    | "bottom-right";
 };
 type MyAction = Action<HTMLElement | SVGElement | SVGRectElement, Info, {}>;
 
@@ -32,13 +39,13 @@ export const tooltip: MyAction = (node: Element, info: Info) => {
       props.visible = false;
     };
 
-    node.addEventListener('mouseover', handleOver);
-    node.addEventListener('mouseout', handleOut);
+    node.addEventListener("mouseover", handleOver);
+    node.addEventListener("mouseout", handleOut);
 
     return () => {
       unmount(div);
-      node.removeEventListener('mouseover', handleOver);
-      node.removeEventListener('mouseover', handleOut);
+      node.removeEventListener("mouseover", handleOver);
+      node.removeEventListener("mouseover", handleOut);
     };
   });
 };

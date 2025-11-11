@@ -39,6 +39,7 @@
   "dependencies": {
     "rollup": "^4.52.5",
     "svelte-awesome-color-picker": "^4.1.0",
+    "svelte-resize-observer-action": "^0.0.4",
     "zod": "^4.1.12"
   }
 }
