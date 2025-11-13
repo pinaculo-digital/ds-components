@@ -20,7 +20,11 @@ function getAllSvelteFiles(dir) {
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) {
       files = files.concat(getAllSvelteFiles(fullPath));
-    } else if (entry.isFile() && entry.name.endsWith(".svelte")) {
+    } else if (
+      entry.isFile() &&
+      entry.name.endsWith(".svelte") &&
+      !entry.name.includes("Description.svelte")
+    ) {
       files.push(fullPath);
     }
   }

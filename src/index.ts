@@ -38,6 +38,12 @@ export { default as UploadMin } from "./components/file-upload/components/Upload
 export { default as Pesquisa } from "./components/filter/components/Pesquisa.svelte";
 export { default as RangeSlider } from "./components/filter/components/RangeSlider.svelte";
 export { default as Slider } from "./components/filter/components/Slider.svelte";
+export { default as BarLateral } from "./components/graphics/components/BarLateral.svelte";
+export { default as LineStacked } from "./components/graphics/components/LineStacked.svelte";
+export { default as LinesGrafico } from "./components/graphics/components/LinesGrafico.svelte";
+export { default as SemiDonut } from "./components/graphics/components/SemiDonut.svelte";
+export { default as Squares } from "./components/graphics/components/Squares.svelte";
+export { default as Stackedbar } from "./components/graphics/components/Stackedbar.svelte";
 export { default as BlockInput } from "./components/inputs/components/BlockInput.svelte";
 export { default as InlineInput } from "./components/inputs/components/InlineInput.svelte";
 export { default as Input } from "./components/inputs/components/Input.svelte";
