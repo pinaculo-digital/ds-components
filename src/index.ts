@@ -74,6 +74,7 @@ export { default as Check } from "./components/checkbox/components/Check.svelte"
 export { default as Slider } from "./components/filter/components/Slider.svelte";
 export { default as Number } from "./components/inputs/components/Number.svelte";
 export { default as Search } from "./components/inputs/components/Search.svelte";
+export { default as TabMenu } from "./components/tabs/components/TabMenu.svelte";
 export { default as Botao } from "./components/button/components/Botao.svelte";
 export { default as Input } from "./components/inputs/components/Input.svelte";
 export { default as Phone } from "./components/inputs/components/Phone.svelte";
