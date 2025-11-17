@@ -1,5 +1,4 @@
 <script lang="ts">
-  import LoaderSmooth from '../../../assets/loading/LoaderSmooth.svelte';
   import Icon from '../../../assets/icon/Icon.svelte';
   
   import type { ColorName } from '../../../lib/utils/colors/colors-utils.js';

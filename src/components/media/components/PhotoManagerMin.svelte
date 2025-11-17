@@ -1,6 +1,6 @@
 <script lang="ts" module>
-  import Avatar from '$components/assets/avatar/Avatar.svelte';
   import { fileManager } from '../../../lib/actions/file.svelte.js';
+  import Avatar from '../../avatar/components/Avatar.svelte';
 
   interface Props {
     formImage: {
