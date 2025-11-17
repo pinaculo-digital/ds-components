@@ -1,5 +1,4 @@
 <script lang="ts" module>
-
   import Label from '../../../assets/labels/Label.svelte';
   import { fileManager } from '../../../lib/actions/file.svelte.js';
 

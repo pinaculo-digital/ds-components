@@ -1,3 +1,5 @@
+//@ts-ignore
+import { TipAction } from "../../assets/wrappers/TipAction.svelte";
 import { mount, unmount } from "svelte";
 import type { Action } from "svelte/action";
 
@@ -34,10 +36,10 @@ export const tooltip: MyAction = (node: Element, info: Info) => {
     node.addEventListener("mouseover", handleOver);
     node.addEventListener("mouseout", handleOut);
 
-    // return () => {
-    //   unmount(div);
-    //   node.removeEventListener('mouseover', handleOver);
-    //   node.removeEventListener('mouseover', handleOut);
-    // };
+    return () => {
+      unmount(div);
+      node.removeEventListener("mouseover", handleOver);
+      node.removeEventListener("mouseover", handleOut);
+    };
   });
 };

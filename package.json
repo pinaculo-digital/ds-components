@@ -37,8 +37,11 @@
     "vite-plugin-dts": "^4.5.4"
   },
   "dependencies": {
+    "chart.js": "^4.5.1",
+    "chartjs": "^0.3.24",
     "rollup": "^4.52.5",
     "svelte-awesome-color-picker": "^4.1.0",
+    "svelte-resize-observer-action": "^0.0.4",
     "zod": "^4.1.12"
   }
 }
