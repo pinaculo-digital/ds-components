@@ -36,9 +36,13 @@ function generateExports() {
 
   const exports = files.map((file) => {
     const relative = path.relative(ROOT, file).replace(/\\/g, "/");
+
     const name = pascalCase(path.basename(file, ".svelte"));
+
     return `export { default as ${name} } from "./${relative}";`;
   });
+
+  exports.sort((a, b) => b.length - a.length);
 
   fs.writeFileSync(INDEX_FILE, exports.join("\n") + "\n");
   console.info(`✅ Gerado ${exports.length} exports em ${INDEX_FILE}`);
