@@ -41,7 +41,7 @@ function generateExports() {
   });
 
   fs.writeFileSync(INDEX_FILE, exports.join("\n") + "\n");
-  console.log(`✅ Gerado ${exports.length} exports em ${INDEX_FILE}`);
+  console.info(`✅ Gerado ${exports.length} exports em ${INDEX_FILE}`);
 }
 
 generateExports();

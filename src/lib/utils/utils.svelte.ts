@@ -64,7 +64,7 @@ export const effectBy = <T extends readonly unknown[]>(
 
 export const cssVar = (name: string) => {
   const tmp = getComputedStyle(document.documentElement).getPropertyValue(name);
-  console.log(tmp);
+  // console.log(tmp);
   return tmp;
 };
 
@@ -98,7 +98,10 @@ export function capitalizar(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-export const validarSeSenhasSaoIguais = (password: string, repeatPassword: string) => {
+export const validarSeSenhasSaoIguais = (
+  password: string,
+  repeatPassword: string
+) => {
   if (password != repeatPassword || password.length === 0) {
     toast.error("Erro no formulário", "As senhas não correspondem.");
     return false;
