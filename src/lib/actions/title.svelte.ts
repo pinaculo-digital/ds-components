@@ -5,13 +5,7 @@ import { mount, unmount } from "svelte";
 
 type Info = {
   text: string | null;
-  posTriangulo:
-    | "top-middle"
-    | "top-left"
-    | "top-right"
-    | "bottom-middle"
-    | "bottom-left"
-    | "bottom-right";
+  posTriangulo: "top-middle" | "top-left" | "top-right" | "bottom-middle" | "bottom-left" | "bottom-right";
 };
 type MyAction = Action<HTMLElement | SVGElement | SVGRectElement, Info, {}>;
 
@@ -26,10 +20,10 @@ export const tooltip: MyAction = (node: Element, info: Info) => {
       posTri: info.posTriangulo,
     });
 
-    let div = mount(TipAction, {
-      target: document.body,
-      props: props,
-    });
+    // let div = mount(TipAction, {
+    //   target: document.body,
+    //   props: props,
+    // });
 
     const handleOver = () => {
       props.visible = true;
