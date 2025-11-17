@@ -1,7 +1,7 @@
-//@ts-ignore
-import { TipAction } from "../../assets/wrappers/TipAction.svelte";
-import { mount, unmount } from "svelte";
+import TipAction from "../../assets/wrappers/TipAction.svelte";
+
 import type { Action } from "svelte/action";
+import { mount, unmount } from "svelte";
 
 type Info = {
   text: string | null;
