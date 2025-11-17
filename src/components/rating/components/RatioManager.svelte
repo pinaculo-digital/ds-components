@@ -2,7 +2,7 @@
   import Icon from '../../../assets/icon/Icon.svelte';
   import Ratio from './Ratio.svelte';
 
-  import { IconName } from '../../../lib/utils/icons/icons-type.js';
+  import type { IconName } from '../../../lib/utils/icons/icons-type.js';
   import type { Snippet } from 'svelte';
 
     type AnyPrimitive = number | boolean | string | undefined;
