@@ -24,14 +24,10 @@
   style="background-color: {getColor(theme).value};"
 >
   {#if leftIcon}
-    <div class="-mt-0.5 -ml-0.5">
       <Icon type={leftIcon} opticalSize={16} />
-    </div>
   {/if}
   <p class="text-subheading-2xsmall font-medium uppercase">{label}</p>
   {#if rightIcon}
-    <div class="-mt-0.5 -mr-0.5">
       <Icon type={rightIcon} opticalSize={16} />
-    </div>
   {/if}
 </div>

@@ -18,7 +18,7 @@
   import ItemsCard from "./ItemsCard.svelte";
 
   let tituloCard = 'Notifications';
-  let tituloBotao = 'Mark all as read';
+  let tituloButton = 'Mark all as read';
   let onClickMarcar = () => {};
 
   let tituloGerenciar = 'Manage Notification';
@@ -26,7 +26,7 @@
 
   let {
     labelCard = tituloCard,
-    tituloMarcar = tituloBotao,
+    tituloMarcar = tituloButton,
     gerenciar = tituloGerenciar,
     clickMarcar = onClickMarcar,
     clickGerenciar = onClickGerenciar,

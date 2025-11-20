@@ -1,12 +1,11 @@
 <script lang="ts" module>
+  import Button from '../../button/components/Button.svelte';
+  import handleDate from '../../../lib/sanitizers/time.js';
+  import s from '../../../lib/sanitizers/sanitizer.js';
   
+  import type { RangeType } from '../../../lib/types/ordinary.js';
   import { slide } from 'svelte/transition';
   import { onMount } from 'svelte';
-  import Botao from '../../button/components/Botao.svelte';
-  import s from '../../../lib/sanitizers/sanitizer.js';
-  import PopUp from '../../modal/components/PopUp.svelte';
-  import type { RangeType } from '../../../lib/types/ordinary.js';
-  import handleDate from '../../../lib/sanitizers/time.js';
 
   interface Props {
     isVisible: boolean;
@@ -17,6 +16,8 @@
 </script>
 
 <script lang="ts">
+  import CenterModal from "../../modal/components/CenterModal.svelte";
+
   let { isVisible = $bindable(), range = $bindable(), onlyOneDay, onSelecionar }: Props = $props();
 
   const now = new Date();
@@ -303,8 +304,8 @@
           </p>
         {/if}
         <div class="grid w-full grid-cols-2 gap-4">
-          <Botao textColor='neutral-600' bgColor='transparent' click={resetAll} label="Limpar"/>
-          <Botao textColor='neutral-600' bgColor='transparent'
+          <Button textColor='neutral-600' bgColor='transparent' click={resetAll} label="Limpar"/>
+          <Button textColor='neutral-600' bgColor='transparent'
             click={() => {
               if (onSelecionar && range) {
                 return onSelecionar(range);
@@ -444,7 +445,7 @@
 {#snippet fixedSelect(secondary: boolean)}
   {@const currentYear = secondary ? yearSecondary : year}
   {@const currentMonth = secondary ? monthSecondary : month}
-  <PopUp bind:open={selectMonth} target="#dataRange">
+  <CenterModal bind:open={selectMonth} target="#dataRange">
     <div class="text-strong-950/80 bg-white-0 flex w-[200px] flex-col items-center justify-between gap-1 text-[22px]">
       <button onclick={() => prevMonth(secondary)} aria-label="Mês anterior">
       </button>
@@ -452,8 +453,8 @@
       <button onclick={() => nextMonth(secondary)} aria-label="Proximo mês">
       </button>
     </div>
-  </PopUp>
-  <PopUp bind:open={selectYear} target="#dataRange">
+  </CenterModal>
+  <CenterModal bind:open={selectYear} target="#dataRange">
     <div class="flex flex-col items-center justify-center gap-4 text-[18px]">
       <b class="text-strong-950">Digite o ano:</b>
       <input
@@ -481,8 +482,8 @@
         }}
       />
       <div class="grid w-full grid-cols-2 gap-4">
-        <Botao textColor='neutral-600' bgColor='transparent' click={resetAll} label="Camcelar"/>
-        <Botao
+        <Button textColor='neutral-600' bgColor='transparent' click={resetAll} label="Camcelar"/>
+        <Button
           textColor='neutral-600' bgColor='transparent'
           click={() => {
             if (inputYear.length < 4) return;
@@ -496,5 +497,5 @@
           label="Selecionar"/>
       </div>
     </div>
-  </PopUp>
+  </CenterModal>
 {/snippet}

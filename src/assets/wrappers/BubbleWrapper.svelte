@@ -23,7 +23,7 @@
     {@render children()}
   {:else}
     <div class="flex w-full items-center justify-center p-12">
-      <LoaderSmooth cor="black" tamanho="24px" />
+      <LoaderSmooth cor="black" size="w-6" />
     </div>
   {/if}
 </div>

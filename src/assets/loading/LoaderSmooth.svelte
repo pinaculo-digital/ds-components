@@ -1,18 +1,18 @@
 <script lang="ts" module>
   interface Props {
-    tamanho: string;
+    size: 'w-1' | 'w-2' | 'w-3'| 'w-4' | 'w-5' | 'w-6' | 'w-full';
     cor?: string;
   }
 </script>
 
 <script lang="ts">
-  let { tamanho, cor = 'white' }: Props = $props();
+  let { size, cor = 'white' }: Props = $props();
 </script>
 
 <svg
   aria-hidden="true"
   role="status"
-  class="inline {tamanho} {cor} me-3 animate-spin"
+  class="inline {size} {cor} me-3 animate-spin"
   viewBox="0 0 100 101"
   fill="none"
   xmlns="http://www.w3.org/2000/svg"

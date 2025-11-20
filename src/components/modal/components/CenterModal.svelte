@@ -1,8 +1,10 @@
 <script lang="ts" module>
+  import Icon from '../../../assets/icon/Icon.svelte';
+
   import { portal } from '../../../lib/actions/portal.svelte.js';
-  import type { Snippet } from 'svelte';
-  import { quadInOut } from 'svelte/easing';
   import { fade, fly } from 'svelte/transition';
+  import { quadInOut } from 'svelte/easing';
+  import type { Snippet } from 'svelte';
 
   interface Props {
     open: boolean;
@@ -39,7 +41,7 @@
     >
       {#if withCloseButton}
         <button class="absolute top-0 right-0 m-4 p-2" onclick={() => (open = false)}>
-          <!-- <SvgX props={{ class: 'fill-black dark:fill-white' }} /> -->
+          <Icon type="close-line" opticalSize={20} />
         </button>
       {/if}
       {@render children()}

@@ -1,6 +1,6 @@
 <script lang="ts" module>
   import { fileManager } from "../../../lib/actions/file.svelte.js";
-  import Botao from "../../button/components/Botao.svelte";
+  import Button from "../../button/components/Button.svelte";
 
   interface Props{ 
     tema?: 'normal' | 'minimal';
@@ -44,12 +44,12 @@
       {/if}
       {#if data64}
         <div class="mt-2 flex flex-wrap items-center gap-3">
-          <Botao bgColor="red-300" textColor='white' click={() => (data64 = '')} label='>Remover'/>
-          <Botao bgColor="red-300" textColor='white' click={triggerFileUpload} label='Trocar imagem'/>
+          <Button bgColor="red-300" textColor='white' click={() => (data64 = '')} label='>Remover'/>
+          <Button bgColor="red-300" textColor='white' click={triggerFileUpload} label='Trocar imagem'/>
         </div>
       {:else}
         <div class="mt-2 flex items-center">
-          <Botao bgColor="red-300" textColor='white' click={triggerFileUpload} label='Adicionar imagem'/>
+          <Button bgColor="red-300" textColor='white' click={triggerFileUpload} label='Adicionar imagem'/>
         </div>
       {/if}
     </div>

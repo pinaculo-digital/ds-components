@@ -1,3 +1,4 @@
+import type { IconName } from './icons/icons-type.js';
 import ShortUniqueId from 'short-unique-id';
 
 type Status = 'information' | 'success' | 'error' | 'warning' | 'faded';
@@ -11,6 +12,7 @@ type Banner = {
   conteudo: string;
   link?: Link;
   status: Status;
+  icon?: IconName;
 };
 type Link = {
   label: string;
