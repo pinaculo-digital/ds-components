@@ -1,22 +1,38 @@
+
 <script lang="ts">
-  import type { Snippet } from 'svelte';
-  import LinkButton from '../../button/components/LinkButton.svelte';
+    import LinkButton from '../../button/components/LinkButton.svelte';
+    import Toggle from './Toggle.svelte';
+    
+    import type { Snippet } from 'svelte';
 
   interface Props {
     avatar?: Snippet;
     label: string;
+    togglePosition?: 'left' | 'right';
     sublabel?: string;
     description?: string;
+    active: boolean;
     linkBtn?: {
       label: string;
       action: VoidFunction;
     };
   }
 
-  let { avatar, label = 'Label aqui', sublabel = 'Sublabel aqui', description = 'Descrição aqui', linkBtn }: Props = $props();
+  let {
+    avatar,
+    label = 'Label aqui',
+    sublabel = 'Sublabel aqui',
+    description = 'Descrição aqui',
+    togglePosition = 'right',
+    active = $bindable(false),
+    linkBtn,
+  }: Props = $props();
 </script>
 
 <div class="flex items-center gap-3">
+  {#if togglePosition === 'left'}
+    <Toggle bind:active />
+  {/if}
   {@render avatar?.()}
   <div class="flex w-full flex-col items-start gap-1">
     <div class="flex items-center gap-1">
@@ -32,4 +48,7 @@
       <LinkButton textColor="blue-200" label={linkBtn.label} click={linkBtn.action} />
     {/if}
   </div>
+  {#if togglePosition === 'right'}
+    <Toggle bind:active />
+  {/if}
 </div>

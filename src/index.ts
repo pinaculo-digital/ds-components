@@ -1,3 +1,5 @@
+export { default as StepIndicatorHorizontal } from "./components/step-indicator/components/StepIndicatorHorizontal.svelte";
+export { default as StepIndicatorVertical } from "./components/step-indicator/components/StepIndicatorVertical.svelte";
 export { default as SelectOptionWithSnippet } from "./components/select/components/Select_Option_With_Snippet.svelte";
 export { default as ProgressBarWithLabel } from "./components/progress-bar/components/ProgressBarWithLabel.svelte";
 export { default as ActivityFeedTabMenu } from "./components/activity-feed/components/ActivityFeedTabMenu.svelte";
@@ -10,7 +12,6 @@ export { default as DashedDivider } from "./components/content-divider/component
 export { default as Toaster } from "./components/alert-notification-toast/components/Toaster.svelte";
 export { default as ContentLabel } from "./components/key-components/components/ContentLabel.svelte";
 export { default as CheckProgress } from "./components/progress-bar/components/CheckProgress.svelte";
-export { default as StepIndicator } from "./components/progress-bar/components/StepIndicator.svelte";
 export { default as TabMenuHorizontal } from "./components/tabs/components/TabMenuHorizontal.svelte";
 export { default as DividerLine } from "./components/content-divider/components/DividerLine.svelte";
 export { default as DividerText } from "./components/content-divider/components/DividerText.svelte";
@@ -46,7 +47,6 @@ export { default as PhotoManager } from "./components/media/components/PhotoMana
 export { default as ButtonGroup } from "./components/button/components/ButtonGroup.svelte";
 export { default as FancyButton } from "./components/button/components/FancyButton.svelte";
 export { default as FocusBlock } from "./components/dropdown/components/FocusBlock.svelte";
-export { default as RangeSlider } from "./components/filter/components/RangeSlider.svelte";
 export { default as BarLateral } from "./components/graphics/components/BarLateral.svelte";
 export { default as Stackedbar } from "./components/graphics/components/Stackedbar.svelte";
 export { default as InlineInput } from "./components/inputs/components/InlineInput.svelte";
@@ -55,6 +55,8 @@ export { default as RatingStars } from "./components/rating/components/RatingSta
 export { default as MainDefault } from "./components/select/components/MainDefault.svelte";
 export { default as MainOrdenar } from "./components/select/components/MainOrdenar.svelte";
 export { default as SelecTabela } from "./components/select/components/SelecTabela.svelte";
+export { default as RangeSlider } from "./components/slider/components/RangeSlider.svelte";
+export { default as ToggleLabel } from "./components/toggle/components/ToggleLabel.svelte";
 export { default as Accordion } from "./components/accordion/components/Accordion.svelte";
 export { default as CardModerno } from "./components/cards/components/CardModerno.svelte";
 export { default as QuickAction } from "./components/cards/components/QuickAction.svelte";
@@ -69,6 +71,7 @@ export { default as SemiDonut } from "./components/graphics/components/SemiDonut
 export { default as BlockInput } from "./components/inputs/components/BlockInput.svelte";
 export { default as InputPreco } from "./components/inputs/components/InputPreco.svelte";
 export { default as MainOption } from "./components/select/components/MainOption.svelte";
+export { default as ToggleCard } from "./components/toggle/components/ToggleCard.svelte";
 export { default as CardInfoGo } from "./components/cards/components/CardInfoGo.svelte";
 export { default as CardMarket } from "./components/cards/components/CardMarket.svelte";
 export { default as CardStatus } from "./components/cards/components/CardStatus.svelte";
@@ -94,10 +97,11 @@ export { default as Avatar } from "./components/avatar/components/Avatar.svelte"
 export { default as Banner } from "./components/banner/components/Banner.svelte";
 export { default as Button } from "./components/button/components/Button.svelte";
 export { default as Check } from "./components/checkbox/components/Check.svelte";
-export { default as Slider } from "./components/filter/components/Slider.svelte";
 export { default as Number } from "./components/inputs/components/Number.svelte";
 export { default as Search } from "./components/inputs/components/Search.svelte";
+export { default as Slider } from "./components/slider/components/Slider.svelte";
 export { default as TabMenu } from "./components/tabs/components/TabMenu.svelte";
+export { default as Toggle } from "./components/toggle/components/Toggle.svelte";
 export { default as Input } from "./components/inputs/components/Input.svelte";
 export { default as Phone } from "./components/inputs/components/Phone.svelte";
 export { default as Share } from "./components/inputs/components/Share.svelte";
@@ -106,4 +110,3 @@ export { default as Badge } from "./components/badge/components/Badge.svelte";
 export { default as Table } from "./components/table/components/Table.svelte";
 export { default as Site } from "./components/inputs/components/Site.svelte";
 export { default as Tag } from "./components/badge/components/Tag.svelte";
-export { default as Tab } from "./components/tabs/components/Tab.svelte";

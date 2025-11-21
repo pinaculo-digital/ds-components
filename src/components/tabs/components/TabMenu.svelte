@@ -1,51 +1,58 @@
+
 <script lang="ts">
-    import Icon from "../../../assets/icon/Icon.svelte";
+  import Icon from "../../../assets/icon/Icon.svelte";
 
-    import type { IconName } from "../../../lib/utils/icons/icons-type.js";
-    import { writable } from "svelte/store";
+  import type { IconName } from "../../../lib/utils/icons/icons-type.js";
 
-    interface MenuItem {
-        label: string;
-        icon: IconName;
-        url: string;
-    }
 
-    interface Props{
-        menuItems: MenuItem[];
-        menuName: string;
-        redirect: (route: string) => void
-    }
+  interface Props {
+    menuItems: {
+      label: string;
+      icon: IconName;
+    }[];
+    menuName: string;
+    currentMenu: string;
+  }
 
-    const indexRota = writable(0);
+  const mockItems: {
+    label: string;
+    icon: IconName;
+  }[] = [
+    {
+      label: 'Dashboard',
+      icon: '24-hours-fill',
+    },
+    {
+      label: 'Configurações',
+      icon: 'settings-3-fill',
+    },
+    {
+      label: 'Sair',
+      icon: 'account-box-line',
+    },
+  ];
 
-    let { menuItems, menuName, redirect }: Props = $props();
+  let { menuItems = mockItems, menuName = 'Menu', currentMenu = $bindable(mockItems[0].label) }: Props = $props();
 
-    function changeRoute(index: number, url: string) {
-        indexRota.set(index);
-        redirect(url);
-    }
+  function changeRoute(label: string) {
+    currentMenu = label;
+  }
 </script>
 
-
-<div class="flex flex-col gap-2 border border-soft-200 rounded-2xl p-2.5 min-w-[238px]">
-    <p class="text-12 font-normal text-soft-400 py-1 px-2">{menuName}</p>
-    {#each menuItems as { label, icon, url }, i}
-        <button
-        class="flex items-center gap-1.5 justify-between p-2 text-14 font-medium hover:bg-weak-50 {$indexRota === i
-            ? 'bg-weak-50 text-strong-950'
-            : 'bg-transparent text-sub-600'} rounded-lg"
-        onclick={() => changeRoute(i, url)}>
-        <div class="flex items-center gap-1.5">
-            <Icon fillColor="neutral-600" opticalSize={20} type={icon} />
-            {label}
-        </div>
-        <span
-            class="bg-white-0 rounded-full w-5 h-5 {$indexRota === i
-            ? 'flex'
-            : 'hidden'} items-center justify-center transition-all duration-300 ease-in-out"
-            >
-            <Icon fillColor="neutral-600" opticalSize={16} type="check-line" />
-        </span>
-        </button>
-    {/each}
-    </div>
+<div class="border-soft-200 flex min-w-[238px] flex-col gap-2 rounded-2xl border p-2.5">
+  <p class="text-subheading-xsmall text-soft-400 px-2 py-1 uppercase">{menuName}</p>
+  {#each menuItems as { label, icon }, i}
+    <button
+      class="text-label-small flex items-center justify-between gap-1.5 p-2 font-medium hover:shadow {currentMenu ===
+      label
+        ? 'bg-weak-50 text-strong-950'
+        : 'text-sub-600 bg-transparent'} rounded-lg"
+      onclick={() => changeRoute(label)}
+    >
+      <div class="flex items-center gap-1.5">
+        <Icon fillColor="neutral-600" opticalSize={20} type={icon} />
+        {label}
+      </div>
+    </button>
+  {/each}
+</div>

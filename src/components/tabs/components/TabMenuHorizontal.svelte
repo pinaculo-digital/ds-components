@@ -1,74 +1,48 @@
 <script lang="ts" module>
-  interface Opcao {
-    label: string;
-    quantidade?: number | undefined;
-    id: number;
-  }
+  import Icon from '../../../assets/icon/Icon.svelte';
+
+  import type { ColorName } from '../../../lib/utils/colors/colors-utils.js';
+  import type { IconName } from '../../../lib/utils/icons/icons-type.js';
+  import { slide } from 'svelte/transition';
 
   interface Props {
-    opcoes?: Opcao[];
-    click?: VoidFunction;
+    options: {
+      label: string;
+      snippetLeft?: IconName;
+    }[];
+    hasArrow?: boolean;
+    labelSelected: string;
   }
+  const mockOptions = [{ label: 'Home' }, { label: 'Sobre' }];
 </script>
 
 <script lang="ts">
-  const opcoesPadrao = [
-    {
-      label: 'All',
-      id: 1,
-    },
-    {
-      label: 'Inbox',
-      quantidade: 2,
-      id: 2,
-    },
-    {
-      label: 'Following',
-      id: 3,
-    },
-  ];
+  let { options = mockOptions, labelSelected = $bindable('Home'), hasArrow = true }: Props = $props();
 
-  const onClick = () => {};
-
-  let { opcoes = opcoesPadrao, click = onClick }: Props = $props();
-
-  let itemAtivo: number | null = $state(0);
-
-  function toggleAccordion(index: number) {
-    itemAtivo = itemAtivo === index ? null : index;
-    click();
+  function getColorText(label: string) {
+    return label === labelSelected ? 'text-strong-950' : 'text-sub-600';
   }
 
-  function formatarQuantidade(qtd: number) {
-    let quantidade = qtd < 10 ? '0' + qtd : qtd;
-
-    return quantidade;
+  function getColorIcon(label: string): ColorName {
+    return label === labelSelected ? 'blue-500' : 'neutral-400';
   }
 </script>
 
-<div class="flex w-full items-center justify-between">
-  <div class="flex gap-3 md:gap-5">
-    {#each opcoes as { label, quantidade, id }, i}
-      <button
-        class="flex items-center justify-center text-[14px] font-medium {itemAtivo === i
-          ? 'text-strong-950'
-          : 'text-sub-600'} relative gap-1"
-        onclick={() => toggleAccordion(i)}
-      >
-        {label}
-        {#if quantidade}
-          <span class="bg-error-base text-static-white shrink-0 rounded-full px-1 py-0.5 text-[11px]"
-            >{formatarQuantidade(quantidade)}</span
-          >
+<div class="border-soft-200 flex w-full items-start gap-5 border-b px-6">
+  {#each options as { label, snippetLeft }}
+    <button class="flex flex-col gap-4 font-medium" onclick={() => (labelSelected = label)}>
+      <div class="flex items-center gap-1.5">
+        {#if snippetLeft}
+          <Icon type={snippetLeft} fillColor={getColorIcon(label)} opticalSize={16} />
         {/if}
-        {#if itemAtivo === i}
-          <span class="bg-primary-base absolute top-[38px] h-0.5 w-4"></span>
+        <p class="text-label-small font-medium {getColorText(label)}">{label}</p>
+        {#if hasArrow}
+          <Icon type="arrow-right-s-line" fillColor={'neutral-400'} opticalSize={16} />
         {/if}
-      </button>
-    {/each}
-    <button class="text-sub-600 border-soft-200 border-l pl-3 text-[14px] font-medium md:pl-5"> Archived </button>
-  </div>
-  <button>
-    <!-- <SvgCompacto /> -->
-  </button>
+      </div>
+      {#if label === labelSelected}
+        <div class="bg-primary-base h-0.5 w-full" transition:slide={{ axis: 'x' }}></div>
+      {/if}
+    </button>
+  {/each}
 </div>

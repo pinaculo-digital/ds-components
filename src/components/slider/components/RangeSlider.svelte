@@ -11,7 +11,13 @@
 </script>
 
 <script lang="ts">
-  let { label, subLabel, start = $bindable(), end = $bindable(), limit }: Props = $props();
+  let {
+    label = 'Label',
+    subLabel = '(Sublabel)',
+    start = $bindable(5),
+    end = $bindable(100),
+    limit = 100,
+  }: Props = $props();
 
   let sliderWidth = $state<number>(0);
   let slider = $state<HTMLDivElement>();
@@ -92,14 +98,14 @@
 </script>
 
 <div class="flex flex-col">
-  <div class="text-sub-600 flex items-center justify-between gap-12 text-[12px]">
+  <div class="flex items-center justify-between gap-12">
     <div class="flex items-center gap-1">
-      <span>{label}</span>
+      <span class="text-paragraph-x-small text-sub-600">{label}</span>
       {#if subLabel}
-        <span class="text-soft-400">{subLabel}</span>
+        <span class="text-paragraph-x-small text-soft-400">{subLabel}</span>
       {/if}
     </div>
-    <span>
+    <span class="text-paragraph-x-small text-sub-600">
       {start.toFixed(2)} - {end.toFixed(2)}
     </span>
   </div>
@@ -118,7 +124,7 @@
     onmousemove={onMove}
     onmouseleave={onExit}
   >
-    <div class="bg-soft-200 pointer-events-none mt-3 flex h-[6px] w-full grow items-center rounded-full select-none">
+    <div class="bg-soft-200 pointer-events-none mt-3 flex h-1.5 w-full grow items-center rounded-full select-none">
       {@render slide('start')}
       {@render slide('end')}
 
