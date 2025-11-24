@@ -1,4 +1,6 @@
 <script lang="ts" module>
+  import Icon from '../../../assets/icon/Icon.svelte';
+
   import { slide } from 'svelte/transition';
 
   interface Props {
@@ -20,8 +22,8 @@
 >
   {tag}
   {#if dismissIcon}
-    <button class="p-1" onclick={() => onClick(tag)}>
-      <!-- <SvgX props={{ class: 'fill-sub-600' }} /> -->
+    <button onclick={() => onClick(tag)}>
+      <Icon type="close-line" opticalSize={16} />
     </button>
   {/if}
 </span>

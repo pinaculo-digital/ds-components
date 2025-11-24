@@ -5,6 +5,7 @@
     import { fade, fly } from 'svelte/transition';
     import { quadInOut } from 'svelte/easing';
     import type { Snippet } from 'svelte';
+  import Icon from '../../../assets/icon/Icon.svelte';
 
   interface Props {
     open: boolean;
@@ -47,17 +48,11 @@
       transition:fly={{ x: 500, duration: 300, easing: quadInOut }}
     >
       {#if label}
-        <div class="mb-4 flex w-full items-center justify-between px-4 text-[18px] font-medium">
+        <div class="mb-4 flex w-full items-center justify-between px-4 text-label-small">
           {label}
           {#if withCloseButton}
             <button class="p-2" onclick={() => (open = false)}>
-              <!-- <SvgX
-                props={{
-                  class: 'fill-black dark:fill-white',
-                  width: 12,
-                  height: 12,
-                }}
-              /> -->
+              <Icon type="close-line" opticalSize={20} />
             </button>
           {/if}
         </div>
@@ -66,7 +61,7 @@
         {@render children()}
       {:else}
         <div class="flex h-full w-full items-center justify-center">
-          <LoaderSmooth tamanho="32px" cor="black" />
+          <LoaderSmooth size='w-6' cor="black" />
         </div>
       {/if}
     </div>

@@ -6,6 +6,8 @@
 </script>
 
 <script lang="ts">
+  import Icon from "../../../assets/icon/Icon.svelte";
+
   let { checked, disabled = false }: Props = $props();
 
   const styleBox = (checked: boolean) => {
@@ -16,9 +18,13 @@
   };
 </script>
 
-<div class="flex aspect-square w-4 items-center justify-center rounded-sm border-2 {styleBox(checked)}">
+<div
+  class="{disabled ? 'pointer-events-none opacity-50' : ''} flex aspect-square h-4 shrink-0 grow-0 items-center justify-center overflow-hidden rounded-sm border-2 {styleBox(
+    checked
+  )}"
+>
   {#if checked}
-    <!-- <SvgCheckMin /> -->
+    <Icon type="check-line" fillColor="white" />
   {/if}
 </div>
 

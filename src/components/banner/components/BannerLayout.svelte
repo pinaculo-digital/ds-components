@@ -1,8 +1,9 @@
 <script lang="ts">
-  import { quadInOut } from 'svelte/easing';
-  import { flySlide } from '../../../lib/animations/transitions';
   import banner from '../../../lib/utils/banner.svelte.js';
   import Banner from './Banner.svelte';
+
+  import { flySlide } from '../../../lib/animations/transitions.js';
+  import { quadInOut } from 'svelte/easing';
 
   interface Props {
     descricao: 'Este layout usa uma classe auxiliar, chamada banner, para organizar os banners. Por favor, abra a definição da classe para entender seus métodos e propriedades.';
@@ -26,7 +27,7 @@
         descricao={b.conteudo}
         link={b.link}
         onClose={() => banner.remove(b.id)}
-        icon={b.icon}
+        icon={b.icon ?? 'information-2-fill'}
       />
     </div>
   {/each}

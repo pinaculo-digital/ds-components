@@ -33,6 +33,7 @@
   }
 </script>
 
+<div class="-mt-0.5 -mr-0.5">
 <svg
   xmlns="http://www.w3.org/2000/svg"
   {width}
@@ -43,3 +44,4 @@
 >
   <path d={renderIcon(type)} />
 </svg>
+</div>

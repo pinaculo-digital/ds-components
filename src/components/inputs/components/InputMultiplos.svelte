@@ -1,5 +1,6 @@
 <script lang="ts">
   import Label from "../../../assets/labels/Label.svelte";
+  import CompactButton from "../../button/components/CompactButton.svelte";
 
   interface Props {
     form: string[];
@@ -43,9 +44,7 @@
       {#each form as item, i}
         <div class="border-soft-200 flex items-center rounded-[10px] border px-2 py-1">
           <span class="text-sub-600 text-12 font-medium">{item}</span>
-          <button class="-mt-1.5 flex items-center justify-center" onclick={() => removeFromForm(i)}>
-            <!-- <SvgClose /> -->
-          </button>
+          <CompactButton icon="close-line" click={() => removeFromForm(i)} />
         </div>
       {/each}
     </div>
