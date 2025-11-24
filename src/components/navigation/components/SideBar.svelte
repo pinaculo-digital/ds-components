@@ -1,8 +1,8 @@
 <script lang="ts" module>
-  import Avatar from '../../avatar/components/Avatar.svelte';
-  import Icon from '$components/assets/icon/Icon.svelte';
 
+  import Icon from '../../../assets/icon/Icon.svelte';
   import type { IconName } from '../../../lib/utils/icons/icons-type.js';
+  import Avatar from '../../avatar/components/Avatar.svelte';
 
   interface Props {
     urlHome?: string;

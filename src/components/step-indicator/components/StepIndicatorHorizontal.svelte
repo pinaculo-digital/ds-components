@@ -1,6 +1,7 @@
 
 <script lang="ts">
-  import Icon from '$components/assets/icon/Icon.svelte';
+  import Icon from '../../../assets/icon/Icon.svelte';
+
 
   interface Props {
     clickable?: boolean;
