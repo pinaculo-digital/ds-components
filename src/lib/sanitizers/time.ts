@@ -1,10 +1,10 @@
-import { format, formatDistance, formatRelative, addDays } from "date-fns";
-import { ptBR } from "date-fns/locale";
+import { format, formatDistance, formatRelative, addDays } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 /*
 Classe utilitária que lida com formatação de data
 */
-export class DataSanitizer {
+class HandleDate {
   /**
    * Função para formatar uma data em um formato específico.
    *
@@ -12,7 +12,7 @@ export class DataSanitizer {
    * @param {string} [dateFormat='dd/MM/yyyy'] - O formato desejado para a data.
    * @returns {string} - A data formatada como uma string.
    */
-  formatDate = (date: Date, dateFormat: string = "dd/MM/yyyy"): string => {
+  formatDate = (date: Date, dateFormat: string = 'dd/MM/yyyy'): string => {
     return format(new Date(date), dateFormat);
   };
 
@@ -23,10 +23,7 @@ export class DataSanitizer {
    * @returns {string} - A distância de tempo até o presente, formatada como uma string.
    */
   formatDistanceToNow = (date: Date) => {
-    return formatDistance(new Date(date), new Date(), {
-      addSuffix: true,
-      locale: ptBR,
-    });
+    return formatDistance(new Date(date), new Date(), { addSuffix: true, locale: ptBR });
   };
 
   /**
@@ -48,8 +45,8 @@ export class DataSanitizer {
 
     // Se for de hoje, retorna "horas:minutos"
     if (isToday) {
-      const hours = date.getHours().toString().padStart(2, "0");
-      const minutes = date.getMinutes().toString().padStart(2, "0");
+      const hours = date.getHours().toString().padStart(2, '0');
+      const minutes = date.getMinutes().toString().padStart(2, '0');
       return `${hours}:${minutes}`;
     }
 
@@ -60,14 +57,14 @@ export class DataSanitizer {
     const isThisWeek = date >= startOfWeek && date < now;
 
     if (isThisWeek) {
-      const daysOfWeek = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+      const daysOfWeek = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
       const dayOfWeek = daysOfWeek[date.getDay()];
-      const hours = date.getHours().toString().padStart(2, "0");
-      const minutes = date.getMinutes().toString().padStart(2, "0");
+      const hours = date.getHours().toString().padStart(2, '0');
+      const minutes = date.getMinutes().toString().padStart(2, '0');
       return `${dayOfWeek} às ${hours}:${minutes}`;
     }
 
-    return this.formatDate(date, "dd/MM/yyyy");
+    return this.formatDate(date);
   }
   /**
    * Função para adicionar dias a uma data.
@@ -77,11 +74,7 @@ export class DataSanitizer {
    * @param {string} [dateFormat='dd/MM/yyyy'] - O formato desejado para a data resultante.
    * @returns {string} - A nova data, com os dias adicionados, formatada
    */
-  addDaysToDate = (
-    date: Date,
-    days: number,
-    dateFormat: string = "dd/MM/yyyy"
-  ) => {
+  addDaysToDate = (date: Date, days: number, dateFormat: string = 'dd/MM/yyyy') => {
     return format(addDays(new Date(date), days), dateFormat);
   };
 
@@ -92,8 +85,8 @@ export class DataSanitizer {
    * @param {string} [dateFormat='dd/MM/yyyy'] - O formato desejado para a data resultante.
    * @returns {string} - A data formatada, convertida a partir da string ISO.
    */
-  formatISODate = (isoDate: string, dateFormat: string = "dd/MM/yyyy") => {
-    if (typeof isoDate !== "string") return "--";
+  formatISODate = (isoDate: string, dateFormat: string = 'dd/MM/yyyy') => {
+    if (typeof isoDate !== 'string') return '--';
     const d = new Date(isoDate);
     const year = d.getUTCFullYear();
     const month = d.getUTCMonth();
@@ -103,5 +96,5 @@ export class DataSanitizer {
   };
 }
 
-const handleDate = new DataSanitizer();
+const handleDate = new HandleDate();
 export default handleDate;

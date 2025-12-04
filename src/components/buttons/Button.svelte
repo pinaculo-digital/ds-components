@@ -1,0 +1,175 @@
+<script lang="ts">
+  import Icon from '../../assets/icon/Icon.svelte';
+
+    import type { ColorName} from '../../lib/utils/colors/colors.utils.js';
+  import { getColor } from '../../lib/utils/colors/colors.utils.js';
+  import type { IconName } from '../../lib/utils/icons/icons.type.js';
+
+
+  interface Props {
+    style?: 'filled' | 'stroke' | 'lighter' | 'ghost';
+    size?: 40 | 36 | 32 | 28;
+    rightIcon?: IconName;
+    leftIcon?: IconName;
+    widthFull?: boolean;
+    disabled?: boolean;
+    onClick?: Function;
+    color?: ColorName;
+    label?: string;
+  }
+
+  let {
+    disabled = $bindable(false),
+    label = 'Clique aqui',
+    onClick = () => {},
+    color = 'primary',
+    widthFull = false,
+    style = 'filled',
+    size = 40,
+    rightIcon,
+    leftIcon,
+  }: Props = $props();
+
+  let buttonWidth = widthFull ? 'w-full' : 'w-fit';
+  let contentColor = handleContentColorsCase();
+  let hoverColor = handleBgColorsCase();
+
+  let iconColor = $derived<ColorName>(disabled ? 'neutral-200' : color.includes('primary') ? 'white' : contentColor);
+  let resolvedHoverColor = $derived(getColor(hoverColor).value);
+  let cursor = $derived(disabled ? 'not-allowed' : 'pointer');
+  let resolvedColor = $derived(getColor(contentColor).value);
+
+  function handleContentColorsCase(): ColorName {
+    if (color) return color;
+    if (style === 'filled') return 'primary';
+    if (color === 'black') return 'white';
+    if (color === 'white') return 'black';
+    return color;
+  }
+
+  function handleBgColorsCase(): ColorName {
+    if (color.includes('primary')) return 'primary-dark';
+    if (color === 'black') return 'black';
+    if (color === 'white') return 'white';
+    return (color.split('-')[0] + '-700') as ColorName;
+  }
+
+  function mountClasses() {
+    return `${buttonWidth} ${handleSize()}`;
+  }
+
+  function handleStyle() {
+    if (disabled) {
+      return `
+        --btn-bg: var(--neutral-50);
+        --btn-border: var(--neutral-50);
+        --btn-color: var(--neutral-200);
+        --btn-hover-bg: var(--neutral-50);
+        --btn-hover-border: var(--neutral-50);
+      `;
+    }
+    switch (style) {
+      case 'filled':
+        return `
+        --btn-bg: ${resolvedColor};
+        --btn-border: ${resolvedColor};
+        --btn-color: white;
+        --btn-hover-bg: ${resolvedHoverColor};
+        --btn-hover-border: ${resolvedHoverColor};
+      `;
+
+      case 'stroke':
+        return `
+        --btn-bg: white;
+        --btn-border: ${resolvedColor};
+        --btn-color: ${resolvedColor};
+        --btn-hover-bg: color-mix(in srgb, ${resolvedColor} 10%, transparent);
+        --btn-focus: color-mix(in srgb, ${resolvedColor} 10%, transparent);
+        --btn-hover-border: ${resolvedColor};
+      `;
+
+      case 'lighter':
+        return `
+        --btn-bg: color-mix(in srgb, ${resolvedColor} 10%, transparent);
+        --btn-focus: color-mix(in srgb, ${resolvedColor} 10%, transparent);
+        --btn-border: transparent;
+        --btn-color: ${resolvedColor};
+        --btn-hover-bg: white;
+        --btn-hover-border: ${resolvedColor};
+      `;
+
+      case 'ghost':
+        return `
+        --btn-bg: transparent;
+        --btn-border: ${resolvedColor};
+        --btn-color: ${resolvedColor};
+        --btn-hover-bg: color-mix(in srgb, ${resolvedHoverColor} 10%, transparent);
+        --btn-focus: color-mix(in srgb, ${resolvedHoverColor} 10%, transparent);
+        --btn-hover-border: transparent;
+      `;
+    }
+  }
+
+  function handleSize() {
+    switch (size) {
+      case 40:
+        return 'h-10 px-2.5 gap-1 rounded-[.625rem]';
+      case 36:
+        return 'h-9 px-2 gap-1 rounded-lg';
+      case 32:
+        return 'h-8 px-1.5 gap-0.5 rounded-lg';
+      case 28:
+        return 'h-7 px-1.5 gap-0.5 rounded-lg';
+    }
+  }
+
+  async function handleClick() {
+    await onClick();
+  }
+</script>
+
+<button
+  class="flex items-center justify-center gap-2 hover:cursor-pointer {cursor} {style} {mountClasses()}"
+  style={handleStyle()}
+  onclick={handleClick}
+>
+  {@render renderIcon(leftIcon)}
+  <p class="text-label-small flex w-fit justify-center px-0.5" style={handleStyle()}>
+    {label}
+  </p>
+  {@render renderIcon(rightIcon)}
+</button>
+
+{#snippet renderIcon(type?: IconName)}
+  {#if type}
+    <Icon {type} opticalSize={20} fillColor={iconColor} />
+  {/if}
+{/snippet}
+
+<style>
+  button {
+    background-color: var(--btn-bg);
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease;
+  }
+
+  button:not(.ghost) {
+    border: 1px solid var(--btn-border);
+  }
+
+  button:hover {
+    background-color: var(--btn-hover-bg);
+    border-color: var(--btn-hover-border);
+  }
+
+  button:focus {
+    box-shadow:
+      0 0 0 2px var(--bg-white-0, #fff),
+      0 0 0 4px var(--alpha-primary-alpha-10, var(--btn-focus));
+    border: 1px solid var(--btn-border);
+  }
+  p {
+    color: var(--btn-color);
+  }
+</style>

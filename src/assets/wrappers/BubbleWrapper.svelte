@@ -7,17 +7,17 @@
     children: Snippet;
     css?: string;
     loading?: boolean;
+    padding?: string;
   }
 </script>
 
 <script lang="ts">
-  let { children, css = 'w-full', loading }: Props = $props();
+  let { children, css = 'w-full', loading, padding = 'p-6' }: Props = $props();
 </script>
 
 <div
-  class="border-soft-200 flex flex-col overflow-hidden rounded-[16px] border p-4 pt-[10px] {css}"
-  in:fly|global={{ duration: 800, x: 500 }}
-  out:scale|global={{ duration: 800 }}
+  class="border-soft-200 bg-white-0 flex flex-col overflow-hidden rounded-2xl border {padding} {css}"
+  style="shadow: rgba(23, 23, 23, 0.06)"
 >
   {#if !loading}
     {@render children()}

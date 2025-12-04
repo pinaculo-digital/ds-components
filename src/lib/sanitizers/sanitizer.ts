@@ -9,26 +9,26 @@ class Sanitizer {
    */
   data(inputDate: string): string {
     // Remove quaisquer caracteres que não sejam números
-    inputDate = inputDate.replace(/\D/g, "");
+    inputDate = inputDate.replace(/\D/g, '');
     inputDate = inputDate.substring(0, 8);
 
     if (inputDate.length == 3) {
       //Retorna dia/
-      inputDate = inputDate.replace(/(\d{2})/, "$1/");
+      inputDate = inputDate.replace(/(\d{2})/, '$1/');
     } else if (inputDate.length == 5 || inputDate.length == 6) {
       //Retorna dia/
-      inputDate = inputDate.replace(/(\d{2})(\d{2})/, "$1/$2/");
+      inputDate = inputDate.replace(/(\d{2})(\d{2})/, '$1/$2/');
     } else if (inputDate.length <= 8) {
       // Retorna dia/mês/ano
-      inputDate = inputDate.replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
+      inputDate = inputDate.replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3');
     }
 
     return inputDate;
   }
 
   numero(input: string, limite?: number, minimo?: number): string {
-    if (typeof input !== "string") return input;
-    input = input.replace(/[^0-9]/g, "");
+    if (typeof input !== 'string') return input;
+    input = input.replace(/[^0-9]/g, '');
 
     if (limite !== undefined && parseInt(input, 10) >= limite) {
       input = limite.toString();
@@ -50,11 +50,11 @@ class Sanitizer {
     if (cpf.length > 14) {
       return cpf.substring(0, 14);
     }
-    let doc = cpf.replace(/[^0-9]/g, "");
+    let doc = cpf.replace(/[^0-9]/g, '');
     if (doc.length <= 11) {
-      doc = doc.replace(/(\d{3})(\d)/, "$1.$2");
-      doc = doc.replace(/(\d{3})(\d)/, "$1.$2");
-      doc = doc.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+      doc = doc.replace(/(\d{3})(\d)/, '$1.$2');
+      doc = doc.replace(/(\d{3})(\d)/, '$1.$2');
+      doc = doc.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
     }
     return doc;
   }
@@ -65,19 +65,19 @@ class Sanitizer {
    * @returns O número do documento formatado.
    */
   cpfcnpj(cpf: string): string {
-    let doc = cpf.replace(/[^0-9]/g, "");
+    let doc = cpf.replace(/[^0-9]/g, '');
     if (doc.length > 14) {
       doc = doc.substring(0, 14);
     }
     if (doc.length <= 11) {
-      doc = doc.replace(/(\d{3})(\d)/, "$1.$2");
-      doc = doc.replace(/(\d{3})(\d)/, "$1.$2");
-      doc = doc.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+      doc = doc.replace(/(\d{3})(\d)/, '$1.$2');
+      doc = doc.replace(/(\d{3})(\d)/, '$1.$2');
+      doc = doc.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
     } else if (doc.length <= 14) {
-      doc = doc.replace(/^(\d{2})(\d)/, "$1.$2");
-      doc = doc.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3");
-      doc = doc.replace(/\.(\d{3})(\d)/, ".$1/$2");
-      doc = doc.replace(/(\d{4})(\d)/, "$1-$2");
+      doc = doc.replace(/^(\d{2})(\d)/, '$1.$2');
+      doc = doc.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+      doc = doc.replace(/\.(\d{3})(\d)/, '.$1/$2');
+      doc = doc.replace(/(\d{4})(\d)/, '$1-$2');
     }
     return doc;
   }
@@ -88,28 +88,22 @@ class Sanitizer {
    * @returns O número de CNPJ formatado.
    */
   cnpj(inputValue: string): string {
-    inputValue = inputValue.replace(/\D/g, "");
+    inputValue = inputValue.replace(/\D/g, '');
 
     if (inputValue.length > 14) {
       inputValue = inputValue.slice(0, 14);
     }
     if (inputValue.length > 2) {
-      inputValue = inputValue.replace(/^(\d{2})(\d)/, "$1.$2");
+      inputValue = inputValue.replace(/^(\d{2})(\d)/, '$1.$2');
     }
     if (inputValue.length > 5) {
-      inputValue = inputValue.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3");
+      inputValue = inputValue.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
     }
     if (inputValue.length > 8) {
-      inputValue = inputValue.replace(
-        /^(\d{2})\.(\d{3})\.(\d{3})(\d)/,
-        "$1.$2.$3/$4"
-      );
+      inputValue = inputValue.replace(/^(\d{2})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3/$4');
     }
     if (inputValue.length > 12) {
-      inputValue = inputValue.replace(
-        /^(\d{2})\.(\d{3})\.(\d{3})\/(\d{4})(\d)/,
-        "$1.$2.$3/$4-$5"
-      );
+      inputValue = inputValue.replace(/^(\d{2})\.(\d{3})\.(\d{3})\/(\d{4})(\d)/, '$1.$2.$3/$4-$5');
     }
 
     return inputValue;
@@ -121,14 +115,14 @@ class Sanitizer {
    * @returns O número de RG formatado.
    */
   rg(inputValue: string): string {
-    inputValue = inputValue.replace(/\D/g, "");
+    inputValue = inputValue.replace(/\D/g, '');
 
     if (inputValue.length > 10) {
       inputValue = inputValue.slice(0, 10);
     }
 
     if (inputValue.length > 9) {
-      inputValue = inputValue.replace(/^(\d{10})(\d)/, "$1-$2");
+      inputValue = inputValue.replace(/^(\d{10})(\d)/, '$1-$2');
     }
 
     return inputValue;
@@ -139,7 +133,7 @@ class Sanitizer {
    * @returns O número de inscrição estadual formatado.
    */
   inscricaoEstadual(ie: string): string {
-    ie = ie.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
+    ie = ie.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
 
     // Limita a inscrição estadual a 14 dígitos (máximo observado em alguns estados)
     if (ie.length > 14) {
@@ -149,11 +143,11 @@ class Sanitizer {
     // Formata conforme o número de dígitos. A formatação pode variar por estado.
     // Por exemplo, aqui usaremos um padrão básico de agrupamento.
     if (ie.length <= 9) {
-      ie = ie.replace(/(\d{3})(\d{3})(\d{3})/, "$1.$2.$3");
+      ie = ie.replace(/(\d{3})(\d{3})(\d{3})/, '$1.$2.$3');
     } else if (ie.length <= 12) {
-      ie = ie.replace(/(\d{3})(\d{3})(\d{3})(\d{3})/, "$1.$2.$3.$4");
+      ie = ie.replace(/(\d{3})(\d{3})(\d{3})(\d{3})/, '$1.$2.$3.$4');
     } else {
-      ie = ie.replace(/(\d{3})(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3.$4-$5");
+      ie = ie.replace(/(\d{3})(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3.$4-$5');
     }
 
     return ie;
@@ -166,19 +160,16 @@ class Sanitizer {
    * @returns O número de telefone formatado.
    */
   telefone(input: string, countryCode: boolean = false): string {
-    input = input.replace(/[^0-9]/g, "");
-    let telefone = input.replace(/\D/g, "");
+    input = input.replace(/[^0-9]/g, '');
+    let telefone = input.replace(/\D/g, '');
 
     telefone = telefone.substring(0, countryCode ? 13 : 11);
     if (telefone.length === 11) {
-      telefone = telefone.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
+      telefone = telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
     } else if (telefone.length === 10) {
-      telefone = telefone.replace(/(\d{2})(\d{4})(\d{4})/, "($1) $2-$3");
+      telefone = telefone.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
     } else if (telefone.length === 13 && countryCode) {
-      telefone = telefone.replace(
-        /(\d{2})(\d{2})(\d{5})(\d{4})/,
-        "+$1 ($2) $3-$4"
-      );
+      telefone = telefone.replace(/(\d{2})(\d{2})(\d{5})(\d{4})/, '+$1 ($2) $3-$4');
     } else {
       return input;
     }
@@ -191,17 +182,14 @@ class Sanitizer {
    * @returns O número de telefone formatado.
    */
   telefoneFixo(input: string, countryCode: boolean = false): string {
-    input = input.replace(/[^0-9]/g, "");
-    let telefone = input.replace(/\D/g, "");
+    input = input.replace(/[^0-9]/g, '');
+    let telefone = input.replace(/\D/g, '');
 
     telefone = telefone.substring(0, countryCode ? 13 : 10);
     if (telefone.length === 10) {
-      telefone = telefone.replace(/(\d{2})(\d{4})(\d{4})/, "($1) $2-$3");
+      telefone = telefone.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
     } else if (telefone.length === 13 && countryCode) {
-      telefone = telefone.replace(
-        /(\d{2})(\d{2})(\d{5})(\d{4})/,
-        "+$1 ($2) $3-$4"
-      );
+      telefone = telefone.replace(/(\d{2})(\d{2})(\d{5})(\d{4})/, '+$1 ($2) $3-$4');
     } else {
       return input;
     }
@@ -213,12 +201,19 @@ class Sanitizer {
     return regexEmail.test(email);
   }
 
+  centavosToReais(centavos: number) {
+    let reais = (Number(centavos) / 100).toFixed(2);
+    let [integerPart, decimalPart] = reais.split('.');
+    integerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    return `${integerPart},${decimalPart}`;
+  }
+
   minimo(string: string, minimo: number): boolean {
     if (string) return string.length >= minimo;
     return false;
   }
   cep(input: string): string {
-    input = input.replace(/\D/g, "");
+    input = input.replace(/\D/g, '');
     if (input.length > 5) {
       return `${input.slice(0, 5)}-${input.slice(5, 8)}`;
     }
@@ -228,29 +223,21 @@ class Sanitizer {
     return input;
   }
   reais(input: string) {
-    input = input.replace(/\D/g, "");
+    input = input.replace(/\D/g, '');
     input = (parseInt(input, 10) / 100).toFixed(2);
-    return `R$ ${input.replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`;
+    return `R$ ${input.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`;
   }
 
   nomeComAcentoSemPontuacao(input: string) {
-    return input.replace(/[^\p{L}\p{N}\s']/gu, "").replace(/\s+/g, " ");
-  }
-
-  centavosToReais(input: number | null | string) {
-    if (!input) input = 0;
-    return input.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
+    return input.replace(/[^\p{L}\p{N}\s']/gu, '').replace(/\s+/g, ' ');
   }
 
   slug(dominio: string) {
     return dominio
       .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/\s+/g, "-");
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\s+/g, '-');
   }
 }
 

@@ -1,5 +1,9 @@
 import toast from "./toast.svelte.js";
 
+import { finishBoot, startSkeleton, stopSkeleton } from "../../assets/settings/storage.svelte.js";
+import { onMount } from "svelte";
+
+
 /**
  * Executa uma ação com base na tecla pressionada.
  *
@@ -22,28 +26,28 @@ export const colorOpacity = (c: string, opacity: number): string => {
   c = c.trim().toLowerCase();
 
   // HEX (ex: #fff, #ffffff)
-  if (c.startsWith("#")) {
+  if (c.startsWith('#')) {
     let hex = c.slice(1);
     if (hex.length === 3) {
       hex = hex
-        .split("")
+        .split('')
         .map((char) => char + char)
-        .join("");
+        .join('');
     }
     if (hex.length === 6) {
-      r = Number.parseInt(hex.slice(0, 2), 16);
-      g = Number.parseInt(hex.slice(2, 4), 16);
-      b = Number.parseInt(hex.slice(4, 6), 16);
+      r = parseInt(hex.slice(0, 2), 16);
+      g = parseInt(hex.slice(2, 4), 16);
+      b = parseInt(hex.slice(4, 6), 16);
     }
   }
 
   // RGB ou RGBA (ex: rgb(255,255,255), rgba(255,255,255,1))
-  else if (c.startsWith("rgb")) {
-    const matches = new RegExp(/rgba?\((\d+),\s*(\d+),\s*(\d+)/).exec(c);
+  else if (c.startsWith('rgb')) {
+    const matches = c.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
     if (matches) {
-      r = Number.parseInt(matches[1]);
-      g = Number.parseInt(matches[2]);
-      b = Number.parseInt(matches[3]);
+      r = parseInt(matches[1]);
+      g = parseInt(matches[2]);
+      b = parseInt(matches[3]);
     }
   }
 
@@ -64,7 +68,6 @@ export const effectBy = <T extends readonly unknown[]>(
 
 export const cssVar = (name: string) => {
   const tmp = getComputedStyle(document.documentElement).getPropertyValue(name);
-  // console.log(tmp);
   return tmp;
 };
 
@@ -77,20 +80,31 @@ export function copyToClipboard(text: string) {
   navigator.clipboard.writeText(text);
 }
 
-export function formatarNumero(numero: string) {
-  numero = numero.replaceAll(/\D/g, "");
+/**
+ * Exibe mensagens no console apenas em ambiente de desenvolvimento (localhost).
+ *
+ * @param {string} text - A mensagem a ser exibida no console.
+ */
+export function consoleDev(text: any) {
+  const url = window.location.href;
+  if (url.includes('http://localhost')) console.log(text);
+}
 
-  return numero.replace(/(\d{2})(\d)(\d{4})(\d{4})/, "($1) $2 $3-$4");
+
+export function formatarNumero(numero: string) {
+  numero = numero.replace(/\D/g, '');
+
+  return numero.replace(/(\d{2})(\d)(\d{4})(\d{4})/, '($1) $2 $3-$4');
 }
 
 export function formatCNPJ(cnpj: string) {
-  cnpj = cnpj.replaceAll(/\D/g, "");
-  return cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5");
+  cnpj = cnpj.replace(/\D/g, '');
+  return cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
 }
 
 export function formatarRedeSocial(url: string) {
-  if (url === null || url === "" || url === undefined) return url;
-  const username = url.split(".com/")[1].replace("/", "");
+  if (url === null || url === '' || url === undefined) return url;
+  const username = url.split('.com/')[1].replace('/', '');
   return `@${username}`;
 }
 
@@ -98,35 +112,32 @@ export function capitalizar(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-export const validarSeSenhasSaoIguais = (
-  password: string,
-  repeatPassword: string
-) => {
+export const validarSeSenhasSaoIguais = (password: string, repeatPassword: string) => {
   if (password != repeatPassword || password.length === 0) {
-    toast.error("Erro no formulário", "As senhas não correspondem.");
+    toast.error('Erro no formulário', 'As senhas não correspondem.');
     return false;
   }
   return true;
 };
 
-// export function onMountWithSkeleton(fn: () => void | Promise<void>) {
-//   onMount(() => {
-//     let done = false;
-//     (async () => {
-//       startSkeleton();
-//       try {
-//         await fn();
-//       } finally {
-//         stopSkeleton();
-//         finishBoot();
-//         done = true;
-//       }
-//     })();
-//     return () => {
-//       if (!done) {
-//         stopSkeleton();
-//         finishBoot();
-//       }
-//     };
-//   });
-// }
+export function onMountWithSkeleton(fn: () => void | Promise<void>) {
+  onMount(() => {
+    let done = false;
+    (async () => {
+      startSkeleton();
+      try {
+        await fn();
+      } finally {
+        stopSkeleton();
+        finishBoot();
+        done = true;
+      }
+    })();
+    return () => {
+      if (!done) {
+        stopSkeleton();
+        finishBoot();
+      }
+    };
+  });
+}

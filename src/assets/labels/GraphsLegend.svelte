@@ -1,7 +1,6 @@
 <script lang="ts">
-  import type { ColorName } from "../../lib/utils/colors/colors-utils.js";
-  import { getColor } from "../../lib/utils/colors/colors-utils.js";
-
+    import type { ColorName} from '../../lib/utils/colors/colors.utils.js';
+  import { getColor } from '../../lib/utils/colors/colors.utils.js';
 
   interface Props {
     color: ColorName;

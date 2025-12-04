@@ -1,6 +1,6 @@
 <script lang="ts" module>
   interface Props {
-    size: 'w-1' | 'w-2' | 'w-3'| 'w-4' | 'w-5' | 'w-6' | 'w-full';
+    size: 'w-1' | 'w-2' | 'w-3' | 'w-4' | 'w-5' | 'w-6' | 'w-full';
     cor?: string;
   }
 </script>

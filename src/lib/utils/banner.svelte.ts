@@ -1,5 +1,5 @@
-import type { IconName } from './icons/icons-type.js';
 import ShortUniqueId from 'short-unique-id';
+import type { IconName } from './icons/icons.type.js';
 
 type Status = 'information' | 'success' | 'error' | 'warning' | 'faded';
 type Tema = 'base' | 'light' | 'lighter' | 'transparent';
@@ -12,7 +12,7 @@ type Banner = {
   conteudo: string;
   link?: Link;
   status: Status;
-  icon?: IconName;
+  icon: IconName;
 };
 type Link = {
   label: string;
@@ -66,6 +66,7 @@ class BannerManager {
       link,
       id,
       status: props.status,
+      icon: 'information-line',
     });
   }
 

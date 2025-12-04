@@ -85,6 +85,13 @@ class HandleText {
     return str.trim().replace(/\s+/g, ' ');
   };
 
+  encurtarTexto(texto: string, limite: number): string {
+    if (texto.length <= limite) {
+      return texto;
+    }
+    return texto.slice(0, limite) + '...';
+  }
+
   /**
    * Substitui todas as ocorrências de uma substring por outra em uma string.
    *

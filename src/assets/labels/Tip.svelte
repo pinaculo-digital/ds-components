@@ -1,7 +1,6 @@
 <script lang="ts">
   let { label, type }: { label: string; type: 'tip' | 'error' } = $props();
   import { slide } from 'svelte/transition';
-
 </script>
 
 <div
