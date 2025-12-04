@@ -19,6 +19,7 @@
     "dist"
   ],
   "scripts": {
+    "generate-index": "ts-node generate-index.ts",
     "dev": "vite",
     "build": "vite build",
     "package": "svelte-package -i src -o dist"
@@ -29,10 +30,12 @@
   "devDependencies": {
     "@sveltejs/package": "^2.3.0",
     "@sveltejs/vite-plugin-svelte": "^4.0.0",
+    "@types/node": "^24.10.1",
     "date-fns": "^4.1.0",
     "short-unique-id": "^5.3.2",
     "svelte": "^5.39.11",
-    "typescript": "^5.6.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
     "vite": "^5.4.0",
     "vite-plugin-dts": "^4.5.4"
   },
