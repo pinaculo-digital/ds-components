@@ -68,7 +68,6 @@ export { default as LinkButton } from "./components/buttons/LinkButton.svelte";
 export { default as ListAvatar } from "./components/cards/ListAvatar.svelte";
 export { default as LoaderSmooth } from "./assets/loading/LoaderSmooth.svelte";
 export { default as MainDefault } from "./assets/wrappers/MainDefault.svelte";
-export { default as MainNoBorder } from "./components/select/MainNoBorder.svelte";
 export { default as MainOption } from "./assets/wrappers/MainOption.svelte";
 export { default as MainOrdenar } from "./components/select/MainOrdenar.svelte";
 export { default as MainPhone } from "./components/dropdown/MainPhone.svelte";
