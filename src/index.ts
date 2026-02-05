@@ -37,6 +37,7 @@ export { default as DashedDivider } from "./components/content-divider/DashedDiv
 export { default as DataRange } from "./components/date-picker/DataRange.svelte";
 export { default as Date } from "./components/date-picker/Date.svelte";
 export { default as DayMode } from "./components/date-picker/DayMode.svelte";
+export { default as DisplayerButton } from "./components/button/components/DisplayerButton.svelte";
 export { default as DisplayerButton } from "./components/buttons/DisplayerButton.svelte";
 export { default as DividerBar } from "./components/content-divider/DividerBar.svelte";
 export { default as DividerLine } from "./components/content-divider/DividerLine.svelte";
