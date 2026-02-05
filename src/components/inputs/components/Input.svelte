@@ -1,56 +1,53 @@
 <script lang="ts" module>
-  import InputWrapper from '../../../assets/wrappers/InputWrapper.svelte';
-  import Icon from '../../../assets/icon/Icon.svelte';
-
-  import type { IconName } from '../../../lib/utils/icons/icons-type.js';
-  import type { FieldSetup } from "../../../lib/utils/types.js";
+  import InputWrapper from '../../assets/wrappers/InputWrapper.svelte';
+  import Icon from '../../assets/icon/Icon.svelte';
+  import { IconName } from '../../../lib/utils/icons/icons-type.js';
+  import { BuildedInput } from '../../../lib/types/reflector.svelte.js';
 
   interface Props {
-    data: FieldSetup<string>;
-    label: string;
-    subLabel?: string;
-    placeholder?: string;
-    leftIcon?: IconName;
-    disabled?: boolean;
-    tip?: string;
-    extraTip?: string;
-    onChange?: (e: Event) => void;
     sanitize?: (value: string) => string;
     onEnter?: (value: string) => void;
+    data: BuildedInput<string>;
+    placeholder?: string;
+    onChange?: Function;
+    leftIcon?: IconName;
+    disabled?: boolean;
+    subLabel?: string;
+    extraTip?: string;
+    label: string;
+    tip?: string;
   }
 </script>
 
 <script lang="ts">
   let {
-    data = $bindable(),
-    label,
-    subLabel,
-    tip,
-    extraTip,
     placeholder = 'Placeholder...',
+    onChange = () => {},
+    data = $bindable(),
+    extraTip,
+    subLabel,
     leftIcon,
     disabled,
-    onChange = () => {},
     sanitize,
     onEnter,
+    label,
+    tip,
   }: Props = $props();
 
-  let error: string | undefined = $state(undefined);
+  let error: string | null = $state(null);
 
-  function onInput() {
+  async function onInput(e: Event) {
+    data.display = (e.currentTarget as HTMLInputElement).value;
     if (sanitize) {
       data.display = sanitize(data.display);
-      data.value = data.display.replace(/[^a-zA-Z0-9]/g, '');
     } else {
       data.value = data.display;
     }
+    await onChange?.(e);
   }
 
   function validateValue() {
-    error = data
-      .validator(data.value)
-      .error?.issues.map((issue) => issue.message)
-      .join('');
+    error = data.validate();
   }
 </script>
 
@@ -61,7 +58,7 @@
     data-error={error ? true : null}
   >
     {#if leftIcon}
-      <Icon type={leftIcon} />
+      <Icon type={leftIcon} fillColor={'neutral-400'} opticalSize={20} />
     {/if}
 
     <input
@@ -69,18 +66,17 @@
       type="text"
       name="input"
       bind:value={data.display}
-      {placeholder}
+      placeholder={data.placeholder.length > 0 ? data.placeholder : placeholder}
       oninput={async (e) => {
-        onChange(e);
-        onInput();
+        onInput(e);
       }}
       onblur={validateValue}
       onkeydown={async (e) => {
         if (e.key === 'Enter' && onEnter) {
-          onEnter(data.display);
+          onEnter(data.value);
         }
       }}
-      class="disabled:text-disabled-300 w-full text-[14px] outline-none"
+      class="disabled:text-sub-300 w-full text-[14px] outline-none"
     />
   </div>
 </InputWrapper>
