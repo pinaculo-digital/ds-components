@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { tooltip } from "../../lib/actions/title.svelte.js";
+  import Tooltip from '../wrappers/Tooltip.svelte';
+  import Icon from '../icon/Icon.svelte';
 
   let {
     label,
@@ -10,27 +11,21 @@
 </script>
 
 <div class="flex items-center">
-  <b class="text-strong-950 text-[14px] font-medium">
+  <p class="text-sub-600 text-14 font-medium">
     {label}
-  </b>
+  </p>
   {#if required}
-    <span class="text-primary-base text-[14px]">*</span>
+    <span class="text-primary-base text-14">*</span>
   {/if}
   {#if subLabel}
-    <span class="text-sub-600 mr-1 ml-1 text-[14px] font-normal">
+    <span class="text-sub-600 text-14 mr-1 ml-1 font-normal">
       {subLabel}
     </span>
   {/if}
 
   {#if extraTip}
-    <div
-      class="text-primary-base translate-x-1 text-[14px]"
-      use:tooltip={{
-        text: extraTip,
-        posTriangulo: 'bottom-middle',
-      }}
-    >
-      <!-- <SvgItalic /> -->
-    </div>
+    <Tooltip text={extraTip}>
+      <Icon type="information-2-fill" opticalSize={16} fillColor="neutral-600" />
+    </Tooltip>
   {/if}
 </div>

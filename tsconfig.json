@@ -3,7 +3,7 @@
     "target": "ES2022",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "types": ["svelte"],
+    "types": ["svelte", "node"],
     "rootDir": "src",
     "outDir": "dist",
     "declaration": true,

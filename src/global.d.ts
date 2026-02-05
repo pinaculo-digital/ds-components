@@ -1,4 +1,3 @@
-// src/global.d.ts
 declare module "./lib/animations/transitions.js" {
   export function slidefade(
     node: Element,

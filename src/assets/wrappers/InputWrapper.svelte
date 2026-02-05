@@ -1,18 +1,18 @@
 <script lang="ts" module>
   import sinalizador from '../../lib/utils/signal.svelte.js';
-
-  import type { Snippet } from 'svelte';
   import Label from '../labels/Label.svelte';
   import Tip from '../labels/Tip.svelte';
 
+  import type { Snippet } from 'svelte';
+
   interface Props {
-    value: string | number | null;
+    value: string | number | null | undefined;
     label: string;
     subLabel?: string;
     required?: boolean;
     tip?: string;
     extraTip?: string;
-    error?: string;
+    error?: string | null;
     children: Snippet;
     rightSide?: Snippet;
     validateFunc?: (err?: string) => string | Promise<string>;

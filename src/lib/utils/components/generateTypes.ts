@@ -1,45 +1,45 @@
-import type { props } from "./ds-types.js";
+import { props } from "../../types/ds-types.js";
 
 class GenerationTypesObject {
   private getMockValue(typeText: string): any {
-    const type = typeText.replace(/\s/g, "").replace(/\|undefined/g, "");
+    const type = typeText.replace(/\s/g, '').replace(/\|undefined/g, '');
 
-    if (type === "any" || type === "unknown") return null;
-    if (type === "string") return "example";
-    if (type === "boolean") return false;
-    if (type === "number") return 12;
+    if (type === 'any' || type === 'unknown') return null;
+    if (type === 'string') return 'example';
+    if (type === 'boolean') return false;
+    if (type === 'number') return 12;
 
-    if (type === "Date") return new Date().toISOString();
+    if (type === 'Date') return new Date().toISOString();
 
-    if (type === "IconName") return "question-line";
-    if (type === "ColorTheme") return "information";
-    if (type === "ColorName") return "white";
+    if (type === 'IconName') return 'question-line';
+    if (type === 'ColorTheme') return 'information';
+    if (type === 'ColorName') return 'white';
 
-    if (type.endsWith("[]")) {
+    if (type.endsWith('[]')) {
       const innerType = type.slice(0, -2);
       const val = Array(2).fill(this.getMockValue(innerType));
       return val;
     }
 
-    if (type.includes("|")) {
-      const parts = type.split("|").map((p) => p.trim());
-      const known = parts.find((t) => ["string", "number", "boolean"].includes(t));
+    if (type.includes('|')) {
+      const parts = type.split('|').map((p) => p.trim());
+      const known = parts.find((t) => ['string', 'number', 'boolean'].includes(t));
       return known ? this.getMockValue(known) : parts[0];
     }
 
-    if (type.startsWith("{") && type.endsWith("}")) {
+    if (type.startsWith('{') && type.endsWith('}')) {
       try {
         const inner = type
           .slice(1, -1)
-          .split(";")
+          .split(';')
           .map((s) => s.trim())
           .filter(Boolean);
 
         const obj: Record<string, any> = {};
         for (const pair of inner) {
-          const [key, val] = pair.split(":").map((s) => s.trim());
+          const [key, val] = pair.split(':').map((s) => s.trim());
           if (key && val) {
-            const cleanKey = key.replace("?", "");
+            const cleanKey = key.replace('?', '');
             obj[cleanKey] = this.getMockValue(val);
           }
         }
@@ -56,7 +56,7 @@ class GenerationTypesObject {
     const mock: Record<string, any> = {};
 
     for (const { prop, value } of props) {
-      const objKey = prop.replace("?", "");
+      const objKey = prop.replace('?', '');
       mock[objKey] = this.getMockValue(value);
     }
 

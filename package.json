@@ -30,7 +30,8 @@
   "devDependencies": {
     "@sveltejs/package": "^2.3.0",
     "@sveltejs/vite-plugin-svelte": "^4.0.0",
-    "@types/node": "^24.10.1",
+    "@types/crypto-js": "^4.2.2",
+    "@types/node": "^24.10.9",
     "date-fns": "^4.1.0",
     "short-unique-id": "^5.3.2",
     "svelte": "^5.39.11",
@@ -42,9 +43,12 @@
   "dependencies": {
     "chart.js": "^4.5.1",
     "chartjs": "^0.3.24",
+    "crypto-js": "^4.2.0",
+    "path": "^0.12.7",
     "rollup": "^4.52.5",
     "svelte-awesome-color-picker": "^4.1.0",
     "svelte-resize-observer-action": "^0.0.4",
+    "timers": "^0.1.1",
     "zod": "^4.1.12"
   }
 }
